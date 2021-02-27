@@ -1,0 +1,136 @@
+@font-face {
+  font-family: 'LoL Body';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./assets/fonts/spiegel/spiegel-regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Body';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./assets/fonts/spiegel/spiegel-semibold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Body';
+  font-weight: 900;
+  font-style: normal;
+  src: url('./assets/fonts/spiegel/spiegel-bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Body';
+  font-weight: normal;
+  font-style: italic;
+  src: url('./assets/fonts/spiegel/spiegel-regularitalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Body';
+  font-weight: 700;
+  font-style: italic;
+  src: url('./assets/fonts/spiegel/spiegel-semibolditalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Body';
+  font-weight: 900;
+  font-style: italic;
+  src: url('./assets/fonts/spiegel/spiegel-bolditalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: 300;
+  font-style: normal;
+  src: url('./assets/fonts/beaufort/beaufortforlol-light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./assets/fonts/beaufort/beaufortforlol-regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: 500;
+  font-style: normal;
+  src: url('./assets/fonts/beaufort/beaufortforlol-medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./assets/fonts/beaufort/beaufortforlol-bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: 900;
+  font-style: normal;
+  src: url('./assets/fonts/beaufort/beaufortforlol-heavy.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: 300;
+  font-style: italic;
+  src: url('./assets/fonts/beaufort/beaufortforlol-lightitalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: normal;
+  font-style: italic;
+  src: url('./assets/fonts/beaufort/beaufortforlol-italic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: 500;
+  font-style: italic;
+  src: url('./assets/fonts/beaufort/beaufortforlol-mediumitalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: 700;
+  font-style: italic;
+  src: url('./assets/fonts/beaufort/beaufortforlol-bolditalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LoL Display';
+  font-weight: 900;
+  font-style: italic;
+  src: url('./assets/fonts/beaufort/beaufortforlol-heavyitalic.otf') format('opentype');
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ width: 100vw;
+ height: 100vh;
+ overflow: hidden;
+}
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

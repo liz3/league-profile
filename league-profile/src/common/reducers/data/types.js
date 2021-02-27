@@ -1,0 +1,6 @@
+export const LOAD_PROFILE = "data/LOAD_PROFILE"
+export const LOAD_LEAGUE_DATA = "data/LOAD_LEAGUE_DATA"
+export const LOAD_MATCHLIST = "data/LOAD_MATCHLIST"
+export const LOAD_MATCH = "data/LOAD_MATCH"
+export const LOAD_LEAGUE_MATCH_DATA = "data/LOAD_LEAGUE_MATCH_DATA"
+export const LOAD_LEAGUE_MATCH_DATA_FULL = "data/LOAD_LEAGUE_MATCH_DATA_FULL"

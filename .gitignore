@@ -1,0 +1,6 @@
+Backend/node_modules
+league-profile/node_modules
+league-profile/build
+Backend/build
+Backend/.env.dev
+.DS_Store
