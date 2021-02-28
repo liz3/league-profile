@@ -18,6 +18,18 @@ const Wrapper = styled.div`
     border: 2px solid rgb(70, 55, 20);
     background: #0a0a0a;
     padding: 15px;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(120, 90, 40);
+      border-radius: 10px;
+    }
+
     & > div:nth-child(1) {
       font-family: "LoL Body";
       & h1 {
@@ -35,7 +47,6 @@ const Wrapper = styled.div`
 
 const Home = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(setPage("homw"));
   }, [dispatch]);
@@ -74,7 +85,9 @@ const Home = () => {
           </p>
           <h1>How do i use it</h1>
           <hr />
-          <p>Yep enough talking here you go(press enter to go the profile):</p>
+          <p>
+            Yep enough talking here you go(press enter to go to the profile):
+          </p>
           <Search />
         </div>
       </div>
