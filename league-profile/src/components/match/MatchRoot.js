@@ -53,13 +53,20 @@ const CloseButton = styled.div`
   }
 `;
 
-const MatchRoot = ({ summonerId, userPresent, history, failed, ready }) => {
+const MatchRoot = ({
+  summonerId,
+  userPresent,
+  history,
+  failed,
+  ready,
+  loading,
+}) => {
   const data = useSelector((state) => state.data.match);
   const mapped = data.loaded ? mapMatchData(data, summonerId) : null;
 
   return (
     <RootWrapper userPresent={userPresent}>
-      {!mapped && !failed ? (
+      {!mapped && !loading && !failed ? (
         <PopUp
           title={"Summoner not present"}
           text={"This match exists but the user isnt present in it :("}
@@ -76,7 +83,10 @@ const MatchRoot = ({ summonerId, userPresent, history, failed, ready }) => {
       {userPresent ? (
         <CloseButton onClick={() => history.go(-1)}>
           <div>
-            <img alt={""} src={require("../../assets/img/x_mask.png").default} />
+            <img
+              alt={""}
+              src={require("../../assets/img/x_mask.png").default}
+            />
           </div>
         </CloseButton>
       ) : null}

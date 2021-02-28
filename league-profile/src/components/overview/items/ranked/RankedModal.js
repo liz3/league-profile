@@ -10,6 +10,7 @@ const RankedBigWrapper = styled.div`
     height: 360px;
     width: 1500px;
     top: -400px;
+    left: -60px;
   }
   max-width: 68vw;
   top: -330px;
@@ -47,7 +48,7 @@ const Caret = styled.img`
   @media (min-width: 1700px) {
     top: 362px;
     width: 36px;
-    left: 113px;
+    left: 128px;
   }
   z-index: 10;
   width: 30px;
@@ -99,6 +100,9 @@ const LastSeasonCaption = styled.div`
     font-weight: 600;
     letter-spacing: 1px;
     font-size: 20px;
+    @media (min-width: 1700px) {
+      font-size: 24px;
+    }
   }
 `;
 
@@ -151,15 +155,17 @@ const Line = styled.div`
   height: 1px;
   background: rgb(108, 82, 38);
   width: 80px;
-  margin: 4px 0;
+  margin: 4px 0 8px 0;
+
 `;
 const InfoLine = styled.p`
   margin: 0;
   font-size: 20px;
+  text-transform: uppercase;
   color: rgb(160, 155, 140);
   font-size: 16px;
   @media (min-width: 1700px) {
-    font-size: 18px;
+    font-size: 19px;
 
   }
 `;

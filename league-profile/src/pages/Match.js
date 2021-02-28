@@ -18,19 +18,25 @@ const RootWrapper = styled.div`
 const Match = ({ match }) => {
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { region, matchId, summonerId } = match.params;
   const dispatch = useDispatch();
   const { loaded: userPresent } = useSelector((state) => state.data.profile);
   useEffect(() => {
     setReady(false);
     setFailed(false);
+    setLoading(true);
     dispatch(loadMatch(region, matchId))
       .then((gameLoaded) => {
         dispatch(loadLeagueMatchData()).then((res) => {
-          dispatch(loadLeagueMatchDataFull()).then((res) => setReady(true));
-        });
+          dispatch(loadLeagueMatchDataFull()).then((res) => {
+            setReady(true)
+            setLoading(false)
+          }).catch(err => setLoading(false))
+        }).catch(err => setLoading(false))
       })
       .catch((err) => {
+          setLoading(false)
         if (err?.response?.status === 404) {
           setFailed(true);
         }
@@ -43,10 +49,10 @@ const Match = ({ match }) => {
         <>
           <BackgroundShadow />
           <Banner simple />
-          <MatchRoot failed={failed} ready={ready} userPresent={userPresent} summonerId={summonerId} />
+          <MatchRoot loading={loading} failed={failed} ready={ready} userPresent={userPresent} summonerId={summonerId} />
         </>
       ) : (
-        <MatchRoot ready={ready} failed={failed} summonerId={summonerId} />
+        <MatchRoot loading={loading} ready={ready} failed={failed} summonerId={summonerId} />
       )}
     </RootWrapper>
   );
