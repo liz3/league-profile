@@ -59,7 +59,18 @@ padding-left: 30px;
 const MatchListContainer = styled.div`
 position: relative;
 overflow-y: scroll;
-
+::-webkit-scrollbar {
+    width:6px;
+    
+  }
+::-webkit-scrollbar-track {
+  background: transparent;
+  }
+::-webkit-scrollbar-thumb {
+  background-color: rgb(120, 90, 40);
+  border-radius: 10px;
+  }
+  
 flex-grow: 1;
 width: 100%;
 margin-top: 15px;
