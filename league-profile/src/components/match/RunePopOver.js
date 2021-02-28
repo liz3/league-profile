@@ -46,7 +46,8 @@ background rgb(1,10,19);
 
 const Wrapper = styled.div`
   position: relative;
- 
+  width: 36px;
+
   @media (min-width: 1700px) {
     width: 44px;
 
