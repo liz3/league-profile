@@ -16,7 +16,7 @@ const getFileForBorder = (level) => {
 
 const Wrapper = styled.div`
   width: 390px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 460px;
   }
 
@@ -32,7 +32,7 @@ const TopLine = styled.div`
   display: flex;
   align-items: center;
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     padding: 6px 0 6px 70px;
   }
   & span {
@@ -40,7 +40,7 @@ const TopLine = styled.div`
     color: #c7b184;
     font-family: "LoL Display";
     font-weight: 600;
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
         font-size: 18px;
 
     }
@@ -48,7 +48,7 @@ const TopLine = styled.div`
 `;
 
 const SmallProfilePicture = styled.img`
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
   width: 40px;
 
 }
@@ -62,7 +62,7 @@ const BigProfilePicture = styled.img`
   height: auto;
   border-radius: 50%;
   margin-top:72px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 180px;
     margin-top:95px;
 
@@ -75,7 +75,7 @@ const BannerBase = styled.img`
   height: auto;
   left: 62px;
   top: -250px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 340px;
   }
 `;
@@ -85,7 +85,7 @@ const TrimBase = styled.img`
   height: auto;
   left: 62px;
   top: 544px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 340px;
     top: 715px;
   }
@@ -96,12 +96,12 @@ const BannerContent = styled.div`
   top: 87px;
   width: 280px;
   text-align: center;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 340px;
     top: 100px;
   }
   & p {
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
       font-size: 36px;
       margin-bottom: 59px;
 
@@ -120,7 +120,7 @@ height: auto;
 position: absolute;
 top: 123px;
 left: 11px;
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
   width: 310px;
   top: 170px;
 }
@@ -141,7 +141,7 @@ const LevelSpanBig = styled.div`
     font-weight: 700;
   }
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 60px;
     height: 35px;
     top: 400px;

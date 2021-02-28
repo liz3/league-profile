@@ -7,7 +7,7 @@ import NoChampImg from "../../../../assets/img/champion_mastery/mastery_framelev
 const Wrapper = styled.div`
   position: relative;
   width: ${(props) => props.size || "120"}px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: ${(props) => props.size * 1.3 || "140"}px;
 
   }

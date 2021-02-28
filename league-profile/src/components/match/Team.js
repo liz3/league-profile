@@ -12,7 +12,7 @@ const StatsPart = styled.div`
   width: 80%;
   height: 100%;
   max-width: 1050px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     max-width: 1300px;
 
   }
@@ -23,7 +23,7 @@ const ObjectivesPart = styled.div`
   height: 100;
   padding: 10px 0 10px 50px;
   max-width: 300px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     max-width: 400px;
 
   }
@@ -44,7 +44,7 @@ const Header = styled.div`
       font-family: "LoL Display";
       font-size: 20px;
       font-weight: 500;
-      @media (min-width: 1700px) {
+      @media (min-width: 1780px) {
         font-size: 24px;
 
       }
@@ -53,7 +53,7 @@ const Header = styled.div`
       width: 26px;
       height: auto;
       opacity: 0.5;
-      @media (min-width: 1700px) {
+      @media (min-width: 1780px) {
         width: 30px;
 
       }

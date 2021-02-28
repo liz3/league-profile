@@ -55,7 +55,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 15px;
   height: 15px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 22px;
   height: 22px;
 

@@ -11,7 +11,7 @@ const Entry = styled.div`
   margin: 0 10px 0 0;
   width: 35px;
   height: 35px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 40px;
     height: 40px;
 
@@ -19,7 +19,7 @@ const Entry = styled.div`
   }
   & img {
 
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
         top: -${(props) => props.index * 40}px;
         clip: rect(
           ${(props) => props.index * 40}px,
@@ -50,7 +50,7 @@ const Entry = styled.div`
     font-family: "LoL Display";
     font-size: 20px;
     font-weight: 700;
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
         font-size: 24px;
 
     }

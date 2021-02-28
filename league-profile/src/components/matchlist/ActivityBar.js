@@ -16,7 +16,7 @@ const Image = styled.img`
 width: 24px;
 height: auto;
 margin-top: 15px;
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
     width: 32px;
     margin-top: 18px;
 
@@ -26,7 +26,7 @@ const BackgroundPart = styled.div`
 background: rgb(30, 35, 40);
 width: 8px;
 height: 150px;
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
     width: 12px;
     height: ${150 * 1.4}px;
 }
@@ -41,7 +41,7 @@ height: ${props => props.percent}px;
 left: 0;
 width: 8px;
 
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
     top:${props => (150 - props.percent) * 1.4}px;
     height: ${props => props.percent * 1.4}px;
     width: 12px;

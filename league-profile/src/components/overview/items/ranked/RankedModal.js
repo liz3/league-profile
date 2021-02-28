@@ -5,16 +5,16 @@ import { Emblems } from "./utils";
 const RankedBigWrapper = styled.div`
   position: absolute;
   height: 300px;
-  width: 1200px;
-  @media (min-width: 1700px) {
+  width: 1050px;
+  @media (min-width: 1780px) {
     height: 360px;
     width: 1500px;
     top: -400px;
-    left: -33px;
+    left: -52px;
   }
   max-width: 68vw;
   top: -330px;
-  left: -15px;
+  left: -37px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   & > div:nth-child(3) {
     border: 2px solid rgb(70, 55, 20);
@@ -37,7 +37,7 @@ const BottomLine = styled.div`
   background: #0a0a0a;
   height: 30px;
   z-index: 0;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     height: 37px;
 
   }
@@ -45,7 +45,7 @@ const BottomLine = styled.div`
 const Caret = styled.img`
   position: absolute;
   top: 302px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     top: 362px;
     width: 36px;
     left: 128px;
@@ -100,7 +100,7 @@ const LastSeasonCaption = styled.div`
     font-weight: 600;
     letter-spacing: 1px;
     font-size: 20px;
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
       font-size: 24px;
     }
   }
@@ -115,7 +115,7 @@ const RankedEntryWrapper = styled.div`
     margin: 0 auto;
     width: ${(props) => (props.present ? "125" : "133")}px;
     margin-top: ${(props) => (props.present ? "0" : "-15")}px;
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
       width: ${(props) => (props.present ? "162" : "172")}px;
       margin-top: ${(props) => (props.present ? "0" : "-20")}px;
     }
@@ -130,7 +130,7 @@ const EntryNameCaption = styled.p`
     props.present ? "rgb(160, 155, 140)" : "rgb(60, 60, 65)"};
   font-weight: 600;
   font-size: 20px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 25px;
 
   }
@@ -144,7 +144,7 @@ const RankCaption = styled.p`
     props.present ? "rgb(228, 219, 200)" : "rgb(60, 60, 65)"};
   font-weight: 600;
   font-size: 16px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 18px;
 
   }
@@ -164,7 +164,7 @@ const InfoLine = styled.p`
   text-transform: uppercase;
   color: rgb(160, 155, 140);
   font-size: 16px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 19px;
 
   }

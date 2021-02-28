@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const Entry = styled.div`
   width: 50px;
   height: 50px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 64px;
     height: 64px;
   }

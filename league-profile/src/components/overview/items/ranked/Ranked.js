@@ -10,7 +10,7 @@ const QueueNames = {
 
 const Wrapper = styled.div`
   min-height: 310px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     min-height: 375px;
 
   }
@@ -32,7 +32,7 @@ const Caption = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 20px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 24px;
 
   }
@@ -43,7 +43,7 @@ const CaptionSmall = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 15px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 17px;
 
   }
@@ -52,7 +52,7 @@ const Image = styled.img`
   margin-top: ${props => props.empty ? 35 :30}px;
   width: ${props => props.empty ? 200 : 150}px;
   height: auto;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
 
     margin-top: ${props => props.empty ? 50 :45}px;
     width: ${props => props.empty ? 230 : 180}px;

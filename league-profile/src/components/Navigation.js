@@ -8,7 +8,7 @@ const NavigationWrapper = styled.div`
   position: absolute;
   top: 20px;
   left: 400px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     left: 450px;
   }
 `;
@@ -20,7 +20,7 @@ const Item = styled.span`
   font-weight: 600;
   margin: 0 19px;
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     margin: 0 24px;
     font-size: 20px;
   }

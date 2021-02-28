@@ -6,7 +6,7 @@ import ChampionModal from "./ChampionModal";
 
 const Wrapper = styled.div`
   min-height: 310px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     min-height: 375px;
   }
   text-align: center;
@@ -28,7 +28,7 @@ const Caption = styled.p`
   font-weight: 700;
   font-size: 20px;
   white-space: nowrap;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 24px;
   }
 `;
@@ -39,7 +39,7 @@ const CaptionSmall = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 28px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 32px;
   }
 `;
@@ -47,7 +47,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     margin-top: 28px;
   }
 `;

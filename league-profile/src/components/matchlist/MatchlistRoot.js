@@ -16,7 +16,7 @@ const ListWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     min-width: 1100px;
   }
 `;
@@ -29,7 +29,7 @@ const ListCaption = styled.p`
   font-size: 23px;
   margin: 35px 0 15px 0;
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 26px;
   }
 `;
@@ -43,7 +43,7 @@ const TabCaption = styled.div`
     font-family: "LoL Display";
     font-weight: 700;
     font-size: 18px;
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
       font-size: 22px;
     }
   }
@@ -73,7 +73,7 @@ const MatchListContainer = styled.div`
   width: 100%;
   margin-top: 15px;
   max-width: 900px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     max-width: 1200px;
   }
 `;

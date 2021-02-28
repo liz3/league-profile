@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   width: ${(props) => props.size || "240px"};
   margin: 0 auto;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: ${(props) => props.size || "300px"};
   }
   position: relative;
@@ -27,7 +27,7 @@ const LevelSpan = styled.div`
   width: 25%;
   left: 0;
   & span {
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
         font-size: 18px;
     }
     color: #fff;

@@ -27,7 +27,7 @@ padding: 20px 35px;
 const MapImg = styled.img`
 width: 70px;
 height: auto;
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
     width: 92px;
 
 }
@@ -43,7 +43,7 @@ letter-spacing: 1px;
 font-family: "LoL Display";
 text-transform: uppercase;
 color: rgb(234,224,205);
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
     font-size: 38px;
 
 }
@@ -53,7 +53,7 @@ display: flex;
 align-items: center;
 & span {
     font-size: 15px;
-    @media (min-width: 1700px) {
+    @media (min-width: 1780px) {
         font-size: 18px;
 
     }

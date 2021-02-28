@@ -71,7 +71,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 34px;
   height: 34px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 44px;
     height: 44px;
 
@@ -82,7 +82,7 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
   width: 42px;
 
 }
@@ -113,7 +113,7 @@ const Caret = styled.img`
   transform: rotate(-90deg);
 `;
 const EmptySlot = styled.div`
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
   width: 42px;
   height: 42px;
 }

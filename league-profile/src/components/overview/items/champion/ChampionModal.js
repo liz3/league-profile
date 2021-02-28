@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 position: absolute;
 
 top: -385px;
-@media (min-width: 1700px) {
+@media (min-width: 1780px) {
   top: -460px;
 
 }
@@ -34,7 +34,7 @@ const BottomLine = styled.div`
   background: #0a0a0a;
   height: 30px;
   z-index: 0;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     height: 38px;
   }
 `;
@@ -43,7 +43,7 @@ const Caret = styled.img`
   top: 354px;
   z-index: 10;
   width: 30px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     top: 424px;
     width: 36px;
   }
@@ -57,7 +57,7 @@ const LineOne = styled.div`
   height: 2px;
   width: 85%;
   top: 50%;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     top: 47%;
   }
   transform: translate(-50%, 0);
@@ -72,7 +72,7 @@ const LineTwo = styled.div`
   opacity: 0.6;
   transform: translate(-50%, 0);
   background: rgb(95, 73, 30);
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     top: 50%;
   }
 `;
@@ -94,7 +94,7 @@ const EntriesWrapper = styled.div`
   height: 230px;
   margin-bottom: 30px;
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     height: 300px;
   }
 `;
@@ -104,7 +104,7 @@ const EntryWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 180px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 230px;
   }
   height: 100%;
@@ -112,7 +112,7 @@ const EntryWrapper = styled.div`
 
   & > div:nth-child(2) {
     & > p {
-      @media (min-width: 1700px) {
+      @media (min-width: 1780px) {
         margin: 45px 0 0 0;
         font-size: 24px;
       }
@@ -129,7 +129,7 @@ const EntryWrapper = styled.div`
       color: rgba(240, 230, 210, 0.9);
       font-size: 16px;
       font-weight: 200;
-      @media (min-width: 1700px) {
+      @media (min-width: 1780px) {
         font-size: 18px;
       }
     }

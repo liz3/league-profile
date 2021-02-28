@@ -21,7 +21,7 @@ const MetaWrapper = styled.div`
 `;
 const LevelSpan = styled.p`
   font-size: 18px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 23px;
 
 }
@@ -41,7 +41,7 @@ const NameSpan = styled.p`
   font-family: "LoL Body";
   margin: 0 9px;
   letter-spacing: 1px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 19px;
 
 }
@@ -53,7 +53,7 @@ const ChampionImage = styled.img`
   width: 40px;
   height: auto;
   margin: 0 4px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 48px;
 
 }
@@ -75,7 +75,7 @@ const StatsWrapper = styled.div`
   & span {
     text-align: center;
   }
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
       font-size: 21px;
   }
   color: ${(props) =>
@@ -90,7 +90,7 @@ const CsWrapper = styled.div`
   & span {
     text-align: center;
   }
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 21px;
 }
   color: ${(props) =>
@@ -105,7 +105,7 @@ const GoldWrapper = styled.div`
   & span {
     text-align: left;
   }
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 21px;
 }
   color: ${(props) =>

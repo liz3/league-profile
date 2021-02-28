@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 36px;
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 44px;
 
 }

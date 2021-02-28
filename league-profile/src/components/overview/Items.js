@@ -5,9 +5,10 @@ import Ranked from "./items/ranked/Ranked";
 import Champion from "./items/champion/ChampionMastery";
 
 const Wrapper = styled.div`
-  margin-left: 40px;
+  margin-left:45px;
   flex-grow: 1;
   display: flex;
+
   & > div {
     margin-right: 45px;
     :hover > p {

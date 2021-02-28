@@ -16,7 +16,7 @@ const Title = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 18px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 23px;
 
   }
@@ -30,7 +30,7 @@ const List = styled.div`
 `;
 const Item = styled.div`
   width: 95px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     width: 120px;
     margin: 0 12px;
   }
@@ -51,7 +51,7 @@ const PercentSpan = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 23px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 27px;
     margin-top: 100px;
   }
@@ -69,7 +69,7 @@ const CaptionSpan = styled.p`
   text-align: center;
   margin-top: 50px;
   font-size: 16px;
-  @media (min-width: 1700px) {
+  @media (min-width: 1780px) {
     font-size: 19px;
 
   }
