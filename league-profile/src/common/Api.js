@@ -1,7 +1,7 @@
 import axios from 'axios'
 class Api {
     constructor() {
-        this.instance = axios.create({baseURL: "http://localhost:3005"})
+        this.instance = axios.create({baseURL: window.location.hostname.includes("localhost") ? "http://localhost:3005" : "https://api.lol-profile.com"})
     }
 
     getProfile(region, name) {
