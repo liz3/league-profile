@@ -89,6 +89,22 @@ const Home = () => {
             Yep enough talking here you go(press enter to go to the profile):
           </p>
           <Search />
+
+          <h1>Please note:</h1>
+          <hr />
+          <p>
+            Do NOT use this on mobile as it will not look represantive and
+            rather cursed. If you want this to look as close as the actual
+            client use a 1080p res or 720p (ish) as the site has a breakpoint at
+            1780px but a lot of image sizes are NOT responsive.
+          </p>
+          <p>
+            lol-profile.com isn't endorsed by Riot Games and doesn't reflect the
+            views or opinions of Riot Games or anyone officially involved in
+            producing or managing League of Legends. League of Legends and Riot
+            Games are trademarks or registered trademarks of Riot Games, Inc.
+            League of Legends © Riot Games, Inc.
+          </p>
         </div>
       </div>
     </Wrapper>
