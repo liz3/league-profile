@@ -27,6 +27,16 @@ const DropdownContainer = styled.div`
   & > div {
     padding: 1px;
     overflow-y: auto;
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(120, 90, 40);
+      border-radius: 10px;
+    }
     max-height: 400px;
     & > div {
       padding: ${props => props.top? '5px 10px 5px 10px' : '12px 10px 12px 10px'};
