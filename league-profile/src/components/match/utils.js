@@ -10,6 +10,7 @@ export const mapMatchData = (data, summonerId) => {
         if(focused) wantedUser = dataFull;
         return dataFull;
     });
+    if(!wantedUser) return null
     const teams = [];
     playersMapped.forEach(p => {
         const t = teams.find(e => e.id === p.teamId)

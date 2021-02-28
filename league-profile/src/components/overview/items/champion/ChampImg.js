@@ -5,7 +5,11 @@ import { getChampionAvatar, getEntryFromId } from "../../../../common/utils";
 
 const Wrapper = styled.div`
   position: relative;
-  width: ${(props) => props.size || "120px"};
+  width: ${(props) => props.size || "120"}px;
+  @media (min-width: 1700px) {
+    width: ${(props) => props.size * 1.3 || "140"}px;
+
+  }
   height: auto;
 `;
 const ChampionImage = styled.img`
@@ -29,7 +33,8 @@ const EmblemBackground = styled.img`
   left: ${(props) => (props.offsetRender ? 8 : 8)}%;
   width: ${(props) => (props.offsetRender ? 81 : 81)}%;
   height: auto;
-  top: ${(props) => (props.offsetRender ? 48 : 48)}%;
+  top: ${(props) => (props.offsetRender ? 44 : 44)}%;
+  
 `;
 const Emblem = styled.img`
   position: absolute;

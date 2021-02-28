@@ -21,6 +21,10 @@ const MetaWrapper = styled.div`
 `;
 const LevelSpan = styled.p`
   font-size: 18px;
+  @media (min-width: 1700px) {
+    font-size: 23px;
+
+}
   color: ${(props) =>
     props.focused ? "rgb(241, 184,11)" : "rgb(240, 230, 210)"};
   font-weight: ${(props) => (props.focused ? "700" : "500")};
@@ -30,12 +34,17 @@ const LevelSpan = styled.p`
   text-align: center;
 `;
 const NameSpan = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   color: ${(props) =>
     props.focused ? "rgb(241, 184,11)" : "rgb(157, 152, 138)"};
   font-weight: ${(props) => (props.focused ? "700" : "500")};
-  font-family: "LoL Display";
+  font-family: "LoL Body";
   margin: 0 9px;
+  letter-spacing: 1px;
+  @media (min-width: 1700px) {
+    font-size: 19px;
+
+}
 `;
 const ChampionImage = styled.img`
   border-radius: 50%;
@@ -44,6 +53,10 @@ const ChampionImage = styled.img`
   width: 40px;
   height: auto;
   margin: 0 4px;
+  @media (min-width: 1700px) {
+    width: 48px;
+
+}
 `;
 
 const ItemWrapper = styled.div`
@@ -62,6 +75,9 @@ const StatsWrapper = styled.div`
   & span {
     text-align: center;
   }
+  @media (min-width: 1700px) {
+      font-size: 21px;
+  }
   color: ${(props) =>
     props.focused ? "rgb(241, 184,11)" : "rgb(240, 230, 210)"};
   font-weight: 700;
@@ -74,6 +90,9 @@ const CsWrapper = styled.div`
   & span {
     text-align: center;
   }
+  @media (min-width: 1700px) {
+    font-size: 21px;
+}
   color: ${(props) =>
     props.focused ? "rgb(241, 184,11)" : "rgb(240, 230, 210)"};
   font-weight: 700;
@@ -86,6 +105,9 @@ const GoldWrapper = styled.div`
   & span {
     text-align: left;
   }
+  @media (min-width: 1700px) {
+    font-size: 21px;
+}
   color: ${(props) =>
     props.focused ? "rgb(241, 184,11)" : "rgb(240, 230, 210)"};
   font-weight: 700;

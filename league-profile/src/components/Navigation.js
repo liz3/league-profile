@@ -1,34 +1,58 @@
-import React from 'react';
-import styled from 'styled-components'
-import {withRouter, Link} from 'react-router-dom';
-import {useSelector} from 'react-redux'
+import React from "react";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
+import {Link} from 'react-router-dom'
 
 const NavigationWrapper = styled.div`
-display: flex;
-position: absolute;
-top: 20px;
-left: 400px;
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: 400px;
+  @media (min-width: 1700px) {
+    left: 440px;
 
-`
+  }
+`;
 const Item = styled.span`
-text-transform: uppercase;
-color: #${props => props.active ? 'fff' : 'c7b184'};
-font-family: 'LoL Display';
-font-weight: 600;
-margin: 0 19px;
-:hover {
+position: relative;
+  text-transform: uppercase;
+  color: #${(props) => (props.active ? "fff" : "c7b184")};
+  font-family: "LoL Display";
+  font-weight: 600;
+  margin: 0 19px;
+  @media (min-width: 1700px) {
+font-size: 18px;
+  }
+  :hover {
     color: #fff;
     cursor: pointer;
-}
+  }
+`;
+const Line = styled.div`
+position: absolute;
+top: 103%;
+width: 115%;
+left: 50%;
+transform: translate(-50%, 0);
+height: 2px;
+background: linear-gradient(90deg, rgba(0,0,0,0.25) 0%, rgba(192,179,137,1) 50%, rgba(0,0,0,0.25) 100%);
 
 `
-const Navigation = ({location, match}) => {
-    const user = useSelector((state) => state.data.profile);
-    console.log(location)
-    return <NavigationWrapper>
-        <Link to={`/profile/${user.region}/${user.user.name}`}><Item >Overview</Item></Link>
-     <Link to={`/profile/${user.region}/${user.user.name}/matchlist`}>   <Item>Match History</Item></Link>
+const Navigation = () => {
+  const user = useSelector((state) => state.data.profile);
+  const page = useSelector(state => state.data.activePage)
+  return (
+    <NavigationWrapper>
+      <Link to={`/profile/${user.region}/${user.user.name}`}>
+        <Item active={page === "profile"}>Overview{page === "profile" ? <Line /> : null}</Item>
+       
+      </Link>
+      <Link to={`/profile/${user.region}/${user.user.name}/matchlist`}>
+        <Item active={page === "matchlist"}>Match History{page === "matchlist" ? <Line /> : null}</Item>
+       
+      </Link>
     </NavigationWrapper>
-}
+  );
+};
 
-export default withRouter(Navigation)
+export default Navigation;

@@ -47,5 +47,10 @@ export const formatTime = (str) => {
     450: "ARAM",
     400: "Draft Pick",
     430: "Blind Pick",
-    900: "AR Ultra Rapid Fire"
+    900: "AR Ultra Rapid Fire",
+    100: "Butcher's Bridge",
+    700: "Clash",
+    2000: "Tutorial 1",
+    2010: "Tutorial 2",
+    2020: "Tutorial 3"
   };

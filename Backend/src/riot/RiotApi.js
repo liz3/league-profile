@@ -249,8 +249,8 @@ class RiotApi {
       user: transformUser(userData),
       champs: transformChampion(
         userChamps
-          .sort((a, b) => b.championLevel - a.championLevel)
-          .sort((a, b) => b.championPoints - a.championPoints)
+        .sort((a, b) => b.championPoints - a.championPoints)
+        .sort((a, b) => b.championLevel - a.championLevel)
          
       ),
       ranked: transformRanked(ranked),

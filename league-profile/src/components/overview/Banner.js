@@ -16,6 +16,10 @@ const getFileForBorder = (level) => {
 
 const Wrapper = styled.div`
   width: 390px;
+  @media (min-width: 1700px) {
+    width: 460px;
+  }
+
   position: relative;
 `;
 
@@ -23,18 +27,31 @@ const TopLine = styled.div`
   padding: 3px 0 3px 60px;
   border-bottom: 2px solid #4a3820;
   background: rgb(1,10,19);
+  min-width: 330px;
   clip-path: polygon(0 0, 100% 0%, 86% 100%, 0% 100%);
   display: flex;
   align-items: center;
+
+  @media (min-width: 1700px) {
+    padding: 6px 0 6px 70px;
+  }
   & span {
     margin-left: 5px;
     color: #c7b184;
     font-family: "LoL Display";
     font-weight: 600;
+    @media (min-width: 1700px) {
+        font-size: 18px;
+
+    }
   }
 `;
 
 const SmallProfilePicture = styled.img`
+@media (min-width: 1700px) {
+  width: 40px;
+
+}
   width: 36px;
   height: auto;
   border-radius: 50%;
@@ -45,6 +62,11 @@ const BigProfilePicture = styled.img`
   height: auto;
   border-radius: 50%;
   margin-top:72px;
+  @media (min-width: 1700px) {
+    width: 180px;
+    margin-top:95px;
+
+  }
 `;
 
 const BannerBase = styled.img`
@@ -53,6 +75,9 @@ const BannerBase = styled.img`
   height: auto;
   left: 62px;
   top: -250px;
+  @media (min-width: 1700px) {
+    width: 340px;
+  }
 `;
 const TrimBase = styled.img`
   position: absolute;
@@ -60,6 +85,10 @@ const TrimBase = styled.img`
   height: auto;
   left: 62px;
   top: 544px;
+  @media (min-width: 1700px) {
+    width: 340px;
+    top: 715px;
+  }
 `;
 const BannerContent = styled.div`
   position: absolute;
@@ -67,8 +96,18 @@ const BannerContent = styled.div`
   top: 87px;
   width: 280px;
   text-align: center;
+  @media (min-width: 1700px) {
+    width: 340px;
+    top: 100px;
+  }
   & p {
+    @media (min-width: 1700px) {
+      font-size: 36px;
+      margin-bottom: 59px;
+
+    }
     margin: 0;
+    margin-bottom: 40px;
     color: #fff;
     font-family: "LoL Display";
     font-weight: 700;
@@ -81,6 +120,10 @@ height: auto;
 position: absolute;
 top: 123px;
 left: 11px;
+@media (min-width: 1700px) {
+  width: 310px;
+  top: 170px;
+}
 }
 `;
 const LevelSpanBig = styled.div`
@@ -97,6 +140,17 @@ const LevelSpanBig = styled.div`
     font-family: "LoL Display";
     font-weight: 700;
   }
+
+  @media (min-width: 1700px) {
+    width: 60px;
+    height: 35px;
+    top: 400px;
+    left: 139px;
+   & span {
+    font-size: 24px;
+
+   }
+  }
 `;
 
 
@@ -105,7 +159,6 @@ const Banner = ({simple}) => {
   const user = useSelector((state) => state.data.profile);
   const patch = useSelector((state) => state.data.leagueData.version);
   if (!user.loaded) return null;
-  console.log(user);
   return (
     <Wrapper>
       {!simple && <BannerBase src={BannerBaseImage} />}
@@ -117,7 +170,7 @@ const Banner = ({simple}) => {
         <span>{user.user.name}</span>
       </TopLine>
       {!simple ? <BannerContent>
-        <p style={{marginBottom: "40px"}}>{user.user.name}</p>
+        <p>{user.user.name}</p>
     
        <LevelBar level={user.user.summonerLevel} />
      

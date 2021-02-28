@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { getRuneImg, getSummonerImage } from "../../common/utils";
+import { getSummonerImage } from "../../common/utils";
 
 const ModalRoot = styled.div`
   position: absolute;
@@ -55,6 +55,11 @@ const Wrapper = styled.div`
   position: relative;
   width: 15px;
   height: 15px;
+  @media (min-width: 1700px) {
+    width: 22px;
+  height: 22px;
+
+}
   &:hover ${ModalRoot} {
     display: block;
   }
@@ -90,19 +95,19 @@ const SummonerPopover = ({ data, patch }) => {
     <Wrapper>
       <ModalRoot>
         <BottomLine />
-        <Caret src={require("../../assets/img/tooltip-caret.png").default} />
+        <Caret alt={""} src={require("../../assets/img/tooltip-caret.png").default} />
         <ModalContent>
           <div>
-            <img src={getSummonerImage(patch, data.id)} />
-          <div>
-          <p>{data.name}</p>
-            <span>Summoner Level: {data.summonerLevel}</span>
-          </div>
+            <img alt={""} src={getSummonerImage(patch, data.id)} />
+            <div>
+              <p>{data.name}</p>
+              <span>Summoner Level: {data.summonerLevel}</span>
+            </div>
           </div>
           <p dangerouslySetInnerHTML={{ __html: data.description }} />
         </ModalContent>
       </ModalRoot>
-      <Image src={getSummonerImage(patch, data.id)} />
+      <Image alt={""} src={getSummonerImage(patch, data.id)} />
     </Wrapper>
   );
 };

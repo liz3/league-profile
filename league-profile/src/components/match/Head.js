@@ -12,10 +12,8 @@ const MapImages = {
     HA: [HAWIN, HADEFEAT]
 }
 
- 
 const BottomLine = styled.div`
 margin-top: 20px;
-
 border-bottom: 1px solid rgb(60,55,50);
 `
 const Wrapper = styled.div`
@@ -29,7 +27,10 @@ padding: 20px 35px;
 const MapImg = styled.img`
 width: 70px;
 height: auto;
+@media (min-width: 1700px) {
+    width: 92px;
 
+}
 `;
 const TextSection = styled.div`
 margin-left: 15px;
@@ -42,14 +43,21 @@ letter-spacing: 1px;
 font-family: "LoL Display";
 text-transform: uppercase;
 color: rgb(234,224,205);
+@media (min-width: 1700px) {
+    font-size: 38px;
+
+}
 `;
 const InfoPart = styled.div`
 display: flex;
 align-items: center;
 & span {
     font-size: 15px;
+    @media (min-width: 1700px) {
+        font-size: 18px;
+
+    }
     margin-right: 14px;
-  
     color: rgb(149,156,132);
 }
 `

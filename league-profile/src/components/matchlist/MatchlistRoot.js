@@ -16,6 +16,9 @@ min-width: 950px;
 height: 100%;
 display: flex;
 flex-direction: column;
+@media (min-width: 1700px) {
+    min-width: 1100px;
+}
 `;
 const ListCaption = styled.p`
 padding: 0 30px;
@@ -25,6 +28,10 @@ font-family: "LoL Display";
 font-weight: 700;
 font-size: 23px;
 margin:35px 0 15px 0;
+
+@media (min-width: 1700px) {
+    font-size: 26px;
+}
 `
 
 const TabCaption = styled.div`
@@ -36,6 +43,9 @@ color: rgb(240,230,210);
 font-family: "LoL Display";
 font-weight: 700;
 font-size: 18px;
+@media (min-width: 1700px) {
+    font-size: 22px;
+}
 }
 border-bottom: 3px solid rgb(200, 155, 60);
 width: 95px;
@@ -54,15 +64,17 @@ flex-grow: 1;
 width: 100%;
 margin-top: 15px;
 max-width: 900px;
+@media (min-width: 1700px) {
+    max-width: 1200px;
+}
 `
 
 const MatchlistRoot = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(loadLeagueMatchData());
-    }, [])
+    }, [dispatch])
     const {matches, loaded} = useSelector(state => state.data.matchlist);
-    console.log(matches)
 return <Wrapper>
     <ListWrapper>
         <ListCaption>Recent Games (Last 20 Played)</ListCaption>

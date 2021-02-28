@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 import Entry from "./Entry";
 import Bans from "./Bans";
 import Stats from "./Stats";
@@ -13,13 +12,22 @@ const StatsPart = styled.div`
   width: 80%;
   height: 100%;
   max-width: 1050px;
-  border-right: 1px solid rgba(255,255,255,.2);
+  @media (min-width: 1700px) {
+    max-width: 1300px;
+
+  }
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 `;
 const ObjectivesPart = styled.div`
-width: calc(20% - 1px);
-height: 100;
-padding: 10px 0 10px 50px;
-`
+  width: calc(20% - 1px);
+  height: 100;
+  padding: 10px 0 10px 50px;
+  max-width: 300px;
+  @media (min-width: 1700px) {
+    max-width: 400px;
+
+  }
+`;
 
 const Header = styled.div`
   width: 100%;
@@ -36,11 +44,19 @@ const Header = styled.div`
       font-family: "LoL Display";
       font-size: 20px;
       font-weight: 500;
+      @media (min-width: 1700px) {
+        font-size: 24px;
+
+      }
     }
     & img {
       width: 26px;
       height: auto;
       opacity: 0.5;
+      @media (min-width: 1700px) {
+        width: 30px;
+
+      }
     }
   }
 `;
@@ -91,11 +107,13 @@ const Team = ({ team, index }) => {
               {teamStats.gold.toLocaleString(undefined, { style: "decimal" })}
             </span>
             <img
+            alt={""}
               src={require("../../assets/img/match/mask-icon-gold.png").default}
             />
           </div>
           <div style={{ width: "9%" }}>
             <img
+            alt={""}
               src={
                 require("../../assets/img/match/mask-icon-offense.png").default
               }
@@ -103,26 +121,34 @@ const Team = ({ team, index }) => {
           </div>
           <div style={{ width: "14%" }}>
             <img
+            alt={""}
               src={require("../../assets/img/match/mask-icon-cs.png").default}
             />
           </div>
           <div style={{ width: "3%" }}>
             <img
+            alt={""}
               src={require("../../assets/img/match/mask-icon-gold.png").default}
             />
           </div>
         </Header>
-        {team.players.map((player, pi) => <Entry push={index === 1 && pi > 1} key={player.playerData.participantId} data={player} />)}
+        {team.players.map((player, pi) => (
+          <Entry
+            push={index === 1 && pi > 1}
+            key={player.playerData.participantId}
+            data={player}
+          />
+        ))}
       </StatsPart>
-    <ObjectivesPart>
-        <Header  accentColor={accentColor}>
-            <div>
-                <span style={{fontWeight: "700"}}>Bans + Objectives</span>
-            </div>
+      <ObjectivesPart>
+        <Header accentColor={accentColor}>
+          <div>
+            <span style={{ fontWeight: "700" }}>Bans + Objectives</span>
+          </div>
         </Header>
         <Bans bans={team.teamData.bans} />
         <Stats data={team.teamData} />
-    </ObjectivesPart>
+      </ObjectivesPart>
     </Wrapper>
   );
 };

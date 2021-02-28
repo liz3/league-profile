@@ -46,7 +46,11 @@ background rgb(1,10,19);
 
 const Wrapper = styled.div`
   position: relative;
-  width: 36px;
+ 
+  @media (min-width: 1700px) {
+    width: 44px;
+
+}
   &:hover ${ModalRoot} {
     display: block;
   }
@@ -82,16 +86,16 @@ const RunePopover = ({ data }) => {
     <Wrapper>
       <ModalRoot>
         <BottomLine />
-        <Caret src={require("../../assets/img/tooltip-caret.png").default} />
+        <Caret alt={""} src={require("../../assets/img/tooltip-caret.png").default} />
         <ModalContent>
           <div>
-            <img src={getRuneImg(data.rune.icon)} />
+            <img alt={""} src={getRuneImg(data.rune.icon)} />
             <p>{data.rune.name}</p>
           </div>
           <p dangerouslySetInnerHTML={{ __html: data.rune.shortDesc }} />
         </ModalContent>
       </ModalRoot>
-      <Image src={getRuneImg(data.rune.icon)} />
+      <Image alt={""} src={getRuneImg(data.rune.icon)} />
     </Wrapper>
   );
 };

@@ -8,6 +8,10 @@ const Wrapper = styled.div`
 position: absolute;
 
 top: -385px;
+@media (min-width: 1700px) {
+  top: -460px;
+
+}
 left: 50%;
 transform: translate(-50%, 0);
 & > div:nth-child(3) {
@@ -30,12 +34,20 @@ const BottomLine = styled.div`
   background: #0a0a0a;
   height: 30px;
   z-index: 0;
+  @media (min-width: 1700px) {
+    height: 38px;
+
+  }
 `;
 const Caret = styled.img`
   position: absolute;
   top: 354px;
   z-index: 10;
   width: 30px;
+  @media (min-width: 1700px) {
+    top: 424px;
+    width: 36px;
+  }
   height: auto;
   left: 50%;
   transform: translate(-50%, 0);
@@ -46,6 +58,10 @@ const LineOne = styled.div`
   height: 2px;
   width: 85%;
   top: 50%;
+  @media (min-width: 1700px) {
+    top: 47%;
+
+  }
   transform: translate(-50%, 0);
   background: rgb(95, 73, 30);
 `;
@@ -58,6 +74,10 @@ const LineTwo = styled.div`
   opacity: 0.6;
   transform: translate(-50%, 0);
   background: rgb(95, 73, 30);
+  @media (min-width: 1700px) {
+    top: 50%;
+
+  }
 `;
 
 const Title = styled.p`
@@ -76,6 +96,11 @@ const EntriesWrapper = styled.div`
   align-items: center;
   height: 230px;
   margin-bottom: 30px;
+
+  @media (min-width: 1700px) {
+    height: 300px;
+
+  }
 `;
 
 const EntryWrapper = styled.div`
@@ -83,14 +108,25 @@ const EntryWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 180px;
+  @media (min-width: 1700px) {
+    width: 230px;
+
+  }
   height: 100%;
   justify-content: space-between;
+
   & > div:nth-child(2) {
     & > p {
+      @media (min-width: 1700px) {
+        margin: 45px 0 0 0;
+        font-size: 24px;
+
+      }
       margin: 30px 0 0 0;
       font-family: "LoL Display";
       color: rgb(240, 230, 210);
       font-size: 20px;
+      
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -99,6 +135,10 @@ const EntryWrapper = styled.div`
       color: rgba(240, 230, 210, 0.9);
       font-size: 16px;
       font-weight: 200;
+      @media (min-width: 1700px) {
+        font-size: 18px;
+
+      }
     }
   }
 `;
@@ -150,9 +190,9 @@ const ChampionModal = ({ champs }) => {
         <LineOne />
         <LineTwo />
         <EntriesWrapper>
-          <Entry data={champs[1]} size={"105px"} adjust />
-          <Entry data={champs[0]} size={"130px"} />
-          <Entry data={champs[2]} size={"105px"} adjust />
+          <Entry data={champs[1]} size={105} adjust />
+          <Entry data={champs[0]} size={130} />
+          <Entry data={champs[2]} size={105} adjust />
         </EntriesWrapper>
       </div>
     </Wrapper>

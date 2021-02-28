@@ -38,6 +38,14 @@ const leagueData = (state = { loaded: false }, action) => {
       return state;
   }
 };
+const activePage = (state = "home", action) => {
+  switch (action.type) {
+    case ActionTypes.SET_ACTIVE_PAGE:
+      return action.page;
+    default:
+      return state;
+  }
+};
 const leagueMatchData = (
   state = { loaded: false, loadedFull: false },
   action
@@ -58,4 +66,5 @@ export default combineReducers({
   matchlist,
   leagueMatchData,
   match,
+  activePage
 });

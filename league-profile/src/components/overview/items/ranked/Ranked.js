@@ -10,6 +10,10 @@ const QueueNames = {
 
 const Wrapper = styled.div`
   min-height: 310px;
+  @media (min-width: 1700px) {
+    min-height: 375px;
+
+  }
   text-align: center;
   position: relative;
   & > div {
@@ -28,6 +32,10 @@ const Caption = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 20px;
+  @media (min-width: 1700px) {
+    font-size: 24px;
+
+  }
 `;
 const CaptionSmall = styled.p`
   margin: 0;
@@ -35,11 +43,20 @@ const CaptionSmall = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 15px;
+  @media (min-width: 1700px) {
+    font-size: 17px;
+
+  }
 `;
 const Image = styled.img`
   margin-top: 30px;
   width: 150px;
   height: auto;
+  @media (min-width: 1700px) {
+    margin-top:45px;
+    width: 180px;
+
+  }
 `;
 
 

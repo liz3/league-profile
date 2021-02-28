@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { loadProfile } from "../common/reducers/data/actions";
+import { loadProfile, setPage } from "../common/reducers/data/actions";
 import BackgroundShadow from "../components/BackgroundShadow";
 import Banner from "../components/overview/Banner";
 import ProfileItems from "../components/overview/Items";
+import PopUp from "../components/PopUp";
 import Search from "../components/Search";
 
 const RootWrapper = styled.div`
@@ -28,18 +29,35 @@ const SearchContainer = styled.div`
 const Profile = ({ match }) => {
   const dispatch = useDispatch();
   const { region, name } = match.params;
-const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
+    setFailed(false);
+    setLoading(true);
+    dispatch(setPage("profile"))
 
-    setLoading(true)
-    dispatch(loadProfile(region, name)).then(res => {
-        setLoading(false)
-    })
+    dispatch(loadProfile(region, name))
+      .then((res) => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        if (err?.response?.status === 404) {
+          setFailed(true);
+          setLoading(false);
+        }
+      });
   }, [region, name, dispatch]);
   const user = useSelector((state) => state.data.profile);
 
   return (
     <RootWrapper active={user.loaded}>
+      {failed ? (
+        <PopUp
+          title={"Summoner Search"}
+          text={`${name} was not found; verify the name and try again.`}
+          onClick={() => setFailed(false)}
+        />
+      ) : null}
       {user.loaded && !loading ? (
         <>
           <BackgroundShadow />

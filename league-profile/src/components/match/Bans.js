@@ -11,8 +11,12 @@ const Wrapper = styled.div`
 const Entry = styled.div`
   width: 50px;
   height: 50px;
+  @media (min-width: 1700px) {
+    width: 64px;
+    height: 64px;
+  }
   margin: 2px 30px 2px 0;
-  background: url(${(props) => props.champImage});
+  background: ${props => props.champImage ? `url(${props.champImage})` : 'rgb(0,0, 0)'};
   background-size: cover;
   & img {
     width: 100%;
@@ -28,10 +32,16 @@ const Bans = ({ bans }) => {
   return (
     <Wrapper>
       {bans.map((e, index) => {
+
+        if(e.championId === -1)
+        return (
+          <Entry key={index} champImage={null} />
+        );
         const champData = getEntryFromId(champions, e.championId);
+       
         return (
           <Entry key={index} champImage={getChampionAvatar(patch, champData.id)}>
-            <img src={IconBan} />
+            <img alt={"champ ban"} src={IconBan} />
           </Entry>
         );
       })}

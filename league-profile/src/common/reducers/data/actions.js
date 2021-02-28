@@ -14,9 +14,9 @@ export const loadProfile = (region, name) => (dispatch, getState) => {
     name === userSaved.name &&
     regionSaved === region
   ) {
-    console.log("from cache");
     return new Promise((resolve) => resolve(getState().data.profile));
   }
+
   return Api.getProfile(region, name).then((res) => {
     dispatch({
       type: ActionTypes.LOAD_PROFILE,
@@ -27,7 +27,10 @@ export const loadProfile = (region, name) => (dispatch, getState) => {
     return res.data;
   });
 };
-export const loadProfileBySummonerId = (region, summonerId) => (dispatch, getState) => {
+export const loadProfileBySummonerId = (region, summonerId) => (
+  dispatch,
+  getState
+) => {
   return Api.getProfileBySummonerId(region, summonerId).then((res) => {
     dispatch({
       type: ActionTypes.LOAD_PROFILE,
@@ -62,27 +65,45 @@ export const loadMatch = (region, gameId) => (dispatch, getState) => {
 export const loadLeagueData = () => (dispatch, getState) => {
   const { loaded } = getState().data.leagueData;
   if (loaded) return Promise.resolve();
-  return Api.getLeagueVersions().then((versionsRes) => {
-    const version = versionsRes.data[0];
-    Api.getChampions(version).then((champRes) => {
-      const champions = champRes.data.data;
-      return dispatch({
-        type: ActionTypes.LOAD_LEAGUE_DATA,
-        data: { version, champions },
-      });
-    });
-  });
+  return Api.getLeagueVersions()
+    .then((versionsRes) => {
+      const version = versionsRes.data[0];
+      return Api.getChampions(version)
+        .then((champRes) => {
+          const champions = champRes.data.data;
+          return dispatch({
+            type: ActionTypes.LOAD_LEAGUE_DATA,
+            data: { version, champions },
+          });
+        })
+        .catch(() =>
+          alert(
+            "Something went wrong while fetching the champions list which is a rito thingy....sry"
+          )
+        );
+    })
+    .catch(() =>
+      alert(
+        "Something went wrong while fetching the patch list which is a rito thingy....sry"
+      )
+    );
 };
 export const loadLeagueMatchData = () => (dispatch, getState) => {
   const { loaded } = getState().data.leagueMatchData;
   if (loaded) return Promise.resolve();
   return dispatch(loadLeagueData()).then(() => {
     const { version } = getState().data.leagueData;
-    return Promise.all([Api.getSummoner(version)]).then((ress) => {
-      const data = { summoners: ress[0].data.data };
-      dispatch({ type: ActionTypes.LOAD_LEAGUE_MATCH_DATA, data });
-      return data;
-    });
+    return Promise.all([Api.getSummoner(version)])
+      .then((ress) => {
+        const data = { summoners: ress[0].data.data };
+        dispatch({ type: ActionTypes.LOAD_LEAGUE_MATCH_DATA, data });
+        return data;
+      })
+      .catch(() =>
+        alert(
+          "Something went wrong while fetching the summoner spells which is a rito thingy....sry"
+        )
+      );
   });
 };
 export const loadLeagueMatchDataFull = () => (dispatch, getState) => {
@@ -90,10 +111,19 @@ export const loadLeagueMatchDataFull = () => (dispatch, getState) => {
   if (loaded) return Promise.resolve();
   return dispatch(loadLeagueData()).then(() => {
     const { version } = getState().data.leagueData;
-    return Promise.all([Api.getItems(version), Api.getRunes(version)]).then((ress) => {
-      const data = { items: ress[0].data.data, runes: ress[1].data };
-      dispatch({ type: ActionTypes.LOAD_LEAGUE_MATCH_DATA_FULL, data });
-      return data;
-    });
+    return Promise.all([Api.getItems(version), Api.getRunes(version)])
+      .then((ress) => {
+        const data = { items: ress[0].data.data, runes: ress[1].data };
+        dispatch({ type: ActionTypes.LOAD_LEAGUE_MATCH_DATA_FULL, data });
+        return data;
+      })
+      .catch(() =>
+        alert(
+          "Something went wrong while fetching items or runes which is a rito thingy....sry"
+        )
+      );
   });
 };
+export const setPage = page => dispatch => {
+  dispatch({type: ActionTypes.SET_ACTIVE_PAGE, page})
+}

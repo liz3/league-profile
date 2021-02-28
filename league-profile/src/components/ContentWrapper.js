@@ -19,21 +19,18 @@ const Wrapper = styled.div`
 const ContextMenuWrapper = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.context_menu);
-  console.log(data);
   if (!data) return null;
 
   return (
-
-      <ContextMenu
-        left={data.x}
-        top={data.y}
-        onTrigger={(key) => {
-          data.items.find((item) => item.key === key).handler();
-          dispatch(setData(null))
-        }}
-        items={data.items}
-      />
-
+    <ContextMenu
+      left={data.x}
+      top={data.y}
+      onTrigger={(key) => {
+        data.items.find((item) => item.key === key).handler();
+        dispatch(setData(null));
+      }}
+      items={data.items}
+    />
   );
 };
 
@@ -47,31 +44,22 @@ const ContentWrapper = ({ children, location }) => {
   const { loaded, champions } = useSelector((state) => state.data.leagueData);
   const user = useSelector((state) => state.data.profile);
 
-  if (!loaded) return null;
-  if (!user.loaded)
-    return (
-      <Wrapper onClick={ev => {
-        if(ctx_menu) {
-          ev.preventDefault()
-          dispatch(setData(null))
-        }
-    }}>
-        <ContextMenuWrapper />
-        {children}
-      </Wrapper>
-    );
-  const champEntryMostPlayed = getEntryFromId(
+  if (!loaded) return null
+  const champEntryMostPlayed = user.loaded ?  getEntryFromId(
     champions,
     user.mostPlayed.champId
-  );
+  ) : null
   const isMatchlist = location.pathname.includes("/matchlist");
   return (
-    <Wrapper onClick={ev => {
-      if(ctx_menu) {
-          ev.preventDefault()
-          dispatch(setData(null))
+    <Wrapper
+      onClick={(ev) => {
+        if (ctx_menu) {
+          ev.preventDefault();
+          dispatch(setData(null));
         }
-    }} splash={getChampionSplash(champEntryMostPlayed.id)}>
+      }}
+      splash={champEntryMostPlayed ? getChampionSplash(champEntryMostPlayed.id) : null}
+    >
       <ContextMenuWrapper />
       <div
         style={{
@@ -81,7 +69,7 @@ const ContentWrapper = ({ children, location }) => {
         }}
       >
         {children}
-        <Navigation />
+        {user.loaded ? <Navigation /> : null}
       </div>
     </Wrapper>
   );

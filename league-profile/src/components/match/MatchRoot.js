@@ -6,6 +6,7 @@ import { mapMatchData } from "./utils";
 import Head from "./Head";
 import Team from "./Team";
 import { withRouter } from "react-router-dom";
+import PopUp from "../PopUp";
 
 const RootWrapper = styled.div`
   width: 100%;
@@ -52,25 +53,41 @@ const CloseButton = styled.div`
   }
 `;
 
-const MatchRoot = ({ summonerId, userPresent, history }) => {
+const MatchRoot = ({ summonerId, userPresent, history, failed, ready }) => {
   const data = useSelector((state) => state.data.match);
-  const mapped = mapMatchData(data, summonerId);
-  console.log("MAPPED", mapped);
+  const mapped = data.loaded ? mapMatchData(data, summonerId) : null;
+
   return (
     <RootWrapper userPresent={userPresent}>
+      {!mapped && !failed ? (
+        <PopUp
+          title={"Summoner not present"}
+          text={"This match exists but the user isnt present in it :("}
+          onClick={() => history.push("/")}
+        />
+      ) : null}
+      {failed ? (
+        <PopUp
+          title={"Match not found"}
+          text={"This match was not found, maybe a wrong region? "}
+          onClick={() => history.push("/")}
+        />
+      ) : null}
       {userPresent ? (
         <CloseButton onClick={() => history.go(-1)}>
           <div>
-            <img src={require("../../assets/img/x_mask.png").default} />
+            <img alt={""} src={require("../../assets/img/x_mask.png").default} />
           </div>
         </CloseButton>
       ) : null}
-      <Head data={mapped} />
-      <TeamsWrapper>
-        {mapped.teams.map((entry, index) => (
-          <Team key={entry.id} index={index} team={entry} />
-        ))}
-      </TeamsWrapper>
+      {mapped && ready ? <Head data={mapped} /> : null}
+      {mapped && ready ? (
+        <TeamsWrapper>
+          {mapped.teams.map((entry, index) => (
+            <Team key={entry.id} index={index} team={entry} />
+          ))}
+        </TeamsWrapper>
+      ) : null}
     </RootWrapper>
   );
 };

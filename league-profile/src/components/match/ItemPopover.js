@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { getItemImage, getRuneImg, getSummonerImage } from "../../common/utils";
+import { getItemImage } from "../../common/utils";
 
 const ModalRoot = styled.div`
   position: absolute;
   display: none;
   min-width: 370px;
   right: 45px;
-  ${props => props.push ? 'bottom' : 'top'}: 0;
-  ${props => !props.push && `transform: translate(0, -50%);`}
+  ${(props) => (props.push ? "bottom" : "top")}: 0;
+  ${(props) => !props.push && `transform: translate(0, -50%);`}
   z-index: 60;
 `;
 const ModalContent = styled.div`
@@ -71,12 +71,21 @@ const Wrapper = styled.div`
   position: relative;
   width: 34px;
   height: 34px;
+  @media (min-width: 1700px) {
+    width: 44px;
+    height: 44px;
+
+  }
   &:hover ${ModalRoot} {
     display: block;
   }
 `;
 
 const Image = styled.img`
+@media (min-width: 1700px) {
+  width: 42px;
+
+}
   width: 32px;
   height: auto;
   border: 1px solid rgb(70, 55, 20);
@@ -99,11 +108,20 @@ const Caret = styled.img`
   z-index: 10;
   width: 30px;
   height: auto;
-  ${props => props.push ? 'bottom: 10px;' :'top: 54%;'}
+  ${(props) => (props.push ? "bottom: 10px;" : "top: 54%;")}
 
-  
   transform: rotate(-90deg);
 `;
+const EmptySlot = styled.div`
+@media (min-width: 1700px) {
+  width: 42px;
+  height: 42px;
+}
+border: 1px solid rgb(70, 55, 20);
+width: 32px;
+height: 32px;
+background: rgb(2,11,21);
+`
 
 const ItemPopover = ({ data, patch, id, push }) => {
   return (
@@ -111,21 +129,33 @@ const ItemPopover = ({ data, patch, id, push }) => {
       {data ? (
         <ModalRoot push={push}>
           <BottomLine />
-          <Caret push={push} src={require("../../assets/img/tooltip-caret.png").default} />
-          <ModalContent >
+          <Caret
+          alt={""}
+            push={push}
+            src={require("../../assets/img/tooltip-caret.png").default}
+          />
+          <ModalContent>
             <div>
-              <img src={getItemImage(patch, id)} />
+              <img alt={""} src={getItemImage(patch, id)} />
               <div>
                 <p>{data.name}</p>
-               <div style={{display: 'flex', alignItems: 'center', marginLeft: "10px"}}>
-               <img
-                  style={{  width: "24px", height: "auto"}}
-                  src={
-                    require("../../assets/img/match/mask-icon-gold.png").default
-                  }
-                />
-                <span>{data.gold.total}</span>
-               </div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginLeft: "10px",
+                  }}
+                >
+                  <img
+                  alt={""}
+                    style={{ width: "24px", height: "auto" }}
+                    src={
+                      require("../../assets/img/match/mask-icon-gold.png")
+                        .default
+                    }
+                  />
+                  <span>{data.gold.total}</span>
+                </div>
               </div>
             </div>
             <p dangerouslySetInnerHTML={{ __html: data.description }} />
@@ -133,15 +163,9 @@ const ItemPopover = ({ data, patch, id, push }) => {
         </ModalRoot>
       ) : null}
       {data ? (
-        <Image src={getItemImage(patch, id)} />
+        <Image alt={""} src={getItemImage(patch, id)} />
       ) : (
-        <div
-          style={{
-            border: "1px solid rgb(70, 55, 20)",
-            width: "32px",
-            height: "32px",
-            background: "rgb(2,11,21)",
-          }}
+        <EmptySlot
         />
       )}
     </Wrapper>

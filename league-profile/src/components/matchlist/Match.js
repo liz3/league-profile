@@ -20,10 +20,15 @@ const ChampImg = styled.div`
     rgba(53, 42, 17, 1) 100%
   );
   padding: 2px;
+
   & img {
+    @media (min-width: 1700px) {
+      width: 105px;
+    }
     border-radius: 50%;
     height: auto;
     width: 85px;
+    
     display: block;
   }
 `;
@@ -39,6 +44,10 @@ const ImageWrapper = styled.div`
     top: 64%;
     width: 24px;
     height: 24px;
+    @media (min-width: 1700px) {
+      width: 28px;
+      height: 28px;
+    }
     background: rgb(1, 10, 19);
     & span {
         display: block;
@@ -48,6 +57,10 @@ const ImageWrapper = styled.div`
       width 100%;
       height: 100%;
       line-height: 22px;
+      @media (min-width: 1700px) {
+        font-size: 17px;
+        line-height: 25px;
+      }
     }
   }
 `;
@@ -107,6 +120,10 @@ position: relative;
 const MetaPart = styled.div`
   margin-left: 25px;
   width: 200px;
+  @media (min-width: 1700px) {
+    width: 250px;
+
+  }
 `;
 const GameResultTitle = styled.p`
   text-transform: uppercase;
@@ -116,11 +133,19 @@ const GameResultTitle = styled.p`
   margin: 0 0 2px 0;
   font-weight: 700;
   letter-spacing: 1px;
+  @media (min-width: 1700px) {
+    font-size: 23px;
+
+  }
 `;
 const GameModeSpan = styled.span`
   color: rgb(140, 137, 125);
   font-size: 16px;
   margin: 0 0 4px 0;
+  @media (min-width: 1700px) {
+    font-size: 19px;
+
+  }
 `;
 const SpellsWrapper = styled.div`
   display: flex;
@@ -140,6 +165,10 @@ width: 42px;
 height: 42px;
 border: 1px solid rgb(95,73,30);
 background rgb(1,10,19);
+@media (min-width: 1700px) {
+  width: 47px;
+height: 47px;
+}
 & img {
     height: 100%;
     width: auto;
@@ -152,7 +181,9 @@ const StatsPart = styled.div`
     color: rgb(140, 137, 125);
     font-family: "LoL Display";
     font-weight: 700;
-
+    @media (min-width: 1700px) {
+      font-size: 26px;
+  }
     font-size: 22px;
   }
 `;
@@ -164,6 +195,9 @@ const InfoPart = styled.div`
     padding: 8px 0;
     color: rgb(140, 137, 125);
     font-size: 15px;
+    @media (min-width: 1700px) {
+      font-size: 18px;
+  }
   }
   & div {
     display: flex;
@@ -191,7 +225,7 @@ const Match = ({ data, history }) => {
       <BottomBar />
       <ImageWrapper>
         <ChampImg>
-          <img src={getChampionAvatar(patch, entry.id)} />
+          <img alt={""} src={getChampionAvatar(patch, entry.id)} />
         </ChampImg>
         <div>
           <span>{data.playerData.stats.champLevel}</span>
@@ -204,12 +238,14 @@ const Match = ({ data, history }) => {
         <GameModeSpan>{QueueNames[data.queueId]}</GameModeSpan>
         <SpellsWrapper>
           <img
+            alt={""}
             src={getSummonerImage(
               patch,
               getEntryFromId(summoners, data.playerData.spell1Id).id
             )}
           />
           <img
+            alt={""}
             src={getSummonerImage(
               patch,
               getEntryFromId(summoners, data.playerData.spell2Id).id
@@ -225,6 +261,7 @@ const Match = ({ data, history }) => {
               <Item key={index}>
                 {data.playerData.stats[`item${index}`] ? (
                   <img
+                    alt={""}
                     src={getItemImage(
                       patch,
                       data.playerData.stats[`item${index}`]

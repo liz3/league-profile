@@ -16,6 +16,10 @@ const Title = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 18px;
+  @media (min-width: 1700px) {
+    font-size: 23px;
+
+  }
   color: rgb(240, 230, 210);
   text-transform: uppercase;
 `;
@@ -26,6 +30,10 @@ const List = styled.div`
 `;
 const Item = styled.div`
   width: 95px;
+  @media (min-width: 1700px) {
+    width: 120px;
+    margin: 0 12px;
+  }
   margin: 0 8px;
   height: auto;
   position: relative;
@@ -43,6 +51,10 @@ const PercentSpan = styled.p`
   font-family: "LoL Display";
   font-weight: 700;
   font-size: 23px;
+  @media (min-width: 1700px) {
+    font-size: 27px;
+    margin-top: 100px;
+  }
   background: linear-gradient(
     90deg,
     rgba(200, 172, 114, 1) 0%,
@@ -57,6 +69,10 @@ const CaptionSpan = styled.p`
   text-align: center;
   margin-top: 50px;
   font-size: 16px;
+  @media (min-width: 1700px) {
+    font-size: 19px;
+
+  }
   color: rgb(160, 155, 140);
 `;
 const RecentlyPlayed = ({ matches = [] }) => {
@@ -107,13 +123,14 @@ const RecentlyPlayed = ({ matches = [] }) => {
           return (
             <Item key={c.id}>
               <img
+                alt={""}
                 style={{ position: "absolute", left: 0, top: "0px" }}
                 src={
                   require(`../../assets/img/champion_mastery/banner-mastery-small-lvl${c.level}.png`)
                     .default
                 }
               />
-              <img src={getChampionAvatar(patch, champData.id)} />
+              <img alt={""} src={getChampionAvatar(patch, champData.id)} />
               <PercentSpan>{c.percent} %</PercentSpan>
             </Item>
           );

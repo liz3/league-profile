@@ -6,6 +6,11 @@ const RankedBigWrapper = styled.div`
   position: absolute;
   height: 300px;
   width: 1200px;
+  @media (min-width: 1700px) {
+    height: 360px;
+    width: 1500px;
+    top: -400px;
+  }
   max-width: 68vw;
   top: -330px;
   left: -40px;
@@ -21,25 +26,34 @@ const RankedBigWrapper = styled.div`
   }
 `;
 const BottomLine = styled.div`
-border: 1px solid rgb(70, 55, 20);
+  border: 1px solid rgb(70, 55, 20);
   position: absolute;
-  top:92%;
+  top: 92%;
   width: 97%;
   left: 50%;
-transform: translate(-50%, 0);
-border-radius: 6px;
+  transform: translate(-50%, 0);
+  border-radius: 6px;
   background: #0a0a0a;
   height: 30px;
   z-index: 0;
+  @media (min-width: 1700px) {
+    height: 37px;
+
+  }
 `;
 const Caret = styled.img`
-position: absolute;
-top: 302px;
-z-index: 10;
-width: 30px;
-height: auto;
-left: 103px;
-`
+  position: absolute;
+  top: 302px;
+  @media (min-width: 1700px) {
+    top: 362px;
+    width: 36px;
+    left: 113px;
+  }
+  z-index: 10;
+  width: 30px;
+  height: auto;
+  left: 103px;
+`;
 const LeaguesWrapper = styled.div`
   width: 73%;
   height: 100%;
@@ -97,6 +111,10 @@ const RankedEntryWrapper = styled.div`
     margin: 0 auto;
     width: ${(props) => (props.present ? "125" : "133")}px;
     margin-top: ${(props) => (props.present ? "0" : "-15")}px;
+    @media (min-width: 1700px) {
+      width: ${(props) => (props.present ? "162" : "172")}px;
+      margin-top: ${(props) => (props.present ? "0" : "-20")}px;
+    }
     height: auto;
     margin-bottom: 25px;
   }
@@ -108,6 +126,10 @@ const EntryNameCaption = styled.p`
     props.present ? "rgb(160, 155, 140)" : "rgb(60, 60, 65)"};
   font-weight: 600;
   font-size: 20px;
+  @media (min-width: 1700px) {
+    font-size: 25px;
+
+  }
   letter-spacing: 2px;
   font-family: "LoL Display";
 `;
@@ -118,6 +140,10 @@ const RankCaption = styled.p`
     props.present ? "rgb(228, 219, 200)" : "rgb(60, 60, 65)"};
   font-weight: 600;
   font-size: 16px;
+  @media (min-width: 1700px) {
+    font-size: 18px;
+
+  }
   letter-spacing: 1px;
   font-family: "LoL Display";
 `;
@@ -132,6 +158,10 @@ const InfoLine = styled.p`
   font-size: 20px;
   color: rgb(160, 155, 140);
   font-size: 16px;
+  @media (min-width: 1700px) {
+    font-size: 18px;
+
+  }
 `;
 const LineOne = styled.div`
   position: absolute;
@@ -153,10 +183,10 @@ const LineTwo = styled.div`
   background: rgb(95, 73, 30);
 `;
 const RankedEntry = ({ data, name }) => {
-  console.log(data);
   return (
     <RankedEntryWrapper present={data}>
       <img
+        alt={""}
         src={
           data
             ? Emblems[data.tier]
@@ -186,7 +216,9 @@ const RankedModal = ({ items = [] }) => {
   return (
     <RankedBigWrapper>
       <BottomLine />
-      <Caret src={require("../../../../assets/img/tooltip-caret.png").default} />
+      <Caret
+        src={require("../../../../assets/img/tooltip-caret.png").default}
+      />
       <div>
         <LeaguesWrapper>
           <LineOne />
@@ -215,7 +247,7 @@ const RankedModal = ({ items = [] }) => {
             <p style={{ fontSize: "18px" }}>Unranked</p>
           </LastSeasonCaption>
         </LastSeasonWrapper>
-      </div>{" "}
+      </div>
     </RankedBigWrapper>
   );
 };

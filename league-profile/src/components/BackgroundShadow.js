@@ -9,13 +9,6 @@ top: 0;
 left: 0;
 display: flex;
 `
-const LeftPart = styled.div`
-height: 100%;
-width: 390px;
-
-box-shadow: 22px 2px 17px 25px #000000;
-
-`
 const RightPart = styled.div`
 height: 100%;
 flex-grow: 1;
