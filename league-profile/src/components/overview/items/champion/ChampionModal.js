@@ -36,7 +36,6 @@ const BottomLine = styled.div`
   z-index: 0;
   @media (min-width: 1700px) {
     height: 38px;
-
   }
 `;
 const Caret = styled.img`
@@ -60,7 +59,6 @@ const LineOne = styled.div`
   top: 50%;
   @media (min-width: 1700px) {
     top: 47%;
-
   }
   transform: translate(-50%, 0);
   background: rgb(95, 73, 30);
@@ -76,7 +74,6 @@ const LineTwo = styled.div`
   background: rgb(95, 73, 30);
   @media (min-width: 1700px) {
     top: 50%;
-
   }
 `;
 
@@ -99,7 +96,6 @@ const EntriesWrapper = styled.div`
 
   @media (min-width: 1700px) {
     height: 300px;
-
   }
 `;
 
@@ -110,7 +106,6 @@ const EntryWrapper = styled.div`
   width: 180px;
   @media (min-width: 1700px) {
     width: 230px;
-
   }
   height: 100%;
   justify-content: space-between;
@@ -120,13 +115,12 @@ const EntryWrapper = styled.div`
       @media (min-width: 1700px) {
         margin: 45px 0 0 0;
         font-size: 24px;
-
       }
       margin: 30px 0 0 0;
       font-family: "LoL Display";
       color: rgb(240, 230, 210);
       font-size: 20px;
-      
+
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -137,7 +131,6 @@ const EntryWrapper = styled.div`
       font-weight: 200;
       @media (min-width: 1700px) {
         font-size: 18px;
-
       }
     }
   }
@@ -146,34 +139,39 @@ const EntryWrapper = styled.div`
 const Entry = ({ data, size, adjust }) => {
   const { loaded, champions } = useSelector((state) => state.data.leagueData);
   if (!loaded) return null;
-  const entry = getEntryFromId(champions, data.championId);
+  console.log(data);
+  const entry = data ? getEntryFromId(champions, data.championId) : null;
 
   return (
     <EntryWrapper adjust={adjust}>
       <div style={{ marginTop: adjust ? "30px" : "0" }}>
         <ChampImg
           size={size}
-          champId={data.championId}
-          level={data.championLevel}
+          champId={data ? data.championId : null}
+          level={data ? data.championLevel : 0}
           offset
         />
       </div>
 
-      <div style={{ textAlign: "center" }}>
-        <p>{entry.name}</p>
-        <div
-          style={{
-            width: "100%",
-            height: "1px",
-            background: "rgb(70,55,20)",
-            margin: "2px 0",
-          }}
-        />
-        <span>
-          {data.championPoints.toLocaleString(undefined, { style: "decimal" })}{" "}
-          pts
-        </span>
-      </div>
+      {data ? (
+        <div style={{ textAlign: "center" }}>
+          <p>{entry.name}</p>
+          <div
+            style={{
+              width: "100%",
+              height: "1px",
+              background: "rgb(70,55,20)",
+              margin: "2px 0",
+            }}
+          />
+          <span>
+            {data.championPoints.toLocaleString(undefined, {
+              style: "decimal",
+            })}{" "}
+            pts
+          </span>
+        </div>
+      ) : null}
     </EntryWrapper>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { getChampionAvatar, getEntryFromId } from "../../../../common/utils";
+import NoChampImg from "../../../../assets/img/champion_mastery/mastery_framelevel0.png"
 
 const Wrapper = styled.div`
   position: relative;
@@ -35,6 +36,16 @@ const EmblemBackground = styled.img`
   height: auto;
   top: ${(props) => (props.offsetRender ? 44 : 44)}%;
   
+  
+`;
+const EmblemBackgroundEmpty = styled.img`
+  position: absolute;
+  height: auto;
+  top: ${(props) => (props.offsetRender ? 44 : 44)}%;
+  left: 18%;
+  width: 63%;
+  background rgb(1,10,19);
+
 `;
 const Emblem = styled.img`
   position: absolute;
@@ -48,25 +59,31 @@ const ChampImg = ({ champId, level, size, offset }) => {
   const { loaded, champions } = useSelector((state) => state.data.leagueData);
   const patch = useSelector((state) => state.data.leagueData.version);
   if (!loaded) return null;
-  const entry = getEntryFromId(champions, champId);
-  const url = getChampionAvatar(patch, entry.id);
+  const entry = champId ? getEntryFromId(champions, champId) : null;
+  const url = champId ? getChampionAvatar(patch, entry.id) : null;
 
   return (
     <Wrapper size={size}>
-      <EmblemBackground
+      {champId ?  <EmblemBackground
         src={
           require(`../../../../assets/img/champion_mastery/mastery_level${level}banner.png`)
             .default
         }
         offsetRender={offset}
-      />
-      <ChampionImage src={url} />
-      <BorderImage
+      />  :  <EmblemBackgroundEmpty
+      src={
+        require(`../../../../assets/img/champion_mastery/mastery_level${level}banner.png`)
+          .default
+      }
+      offsetRender={offset}
+    />}
+      <ChampionImage src={url || NoChampImg} />
+      {champId ? <BorderImage
         src={
           require("../../../../assets/img/champion_mastery/mastery_framecomplete.png")
             .default
         }
-      />
+      /> : null}
       {level > 1 ? (
         <Emblem
           src={

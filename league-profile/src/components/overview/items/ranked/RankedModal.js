@@ -10,11 +10,11 @@ const RankedBigWrapper = styled.div`
     height: 360px;
     width: 1500px;
     top: -400px;
-    left: -60px;
+    left: -33px;
   }
   max-width: 68vw;
   top: -330px;
-  left: -40px;
+  left: -15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   & > div:nth-child(3) {
     border: 2px solid rgb(70, 55, 20);

@@ -49,13 +49,13 @@ const CaptionSmall = styled.p`
   }
 `;
 const Image = styled.img`
-  margin-top: 30px;
-  width: 150px;
+  margin-top: ${props => props.empty ? 35 :30}px;
+  width: ${props => props.empty ? 200 : 150}px;
   height: auto;
   @media (min-width: 1700px) {
-    margin-top:45px;
-    width: 180px;
 
+    margin-top: ${props => props.empty ? 50 :45}px;
+    width: ${props => props.empty ? 230 : 180}px;
   }
 `;
 
@@ -68,7 +68,7 @@ const EmptyState = () => {
       <Caption>SOLO/DUO</Caption>
       <CaptionSmall>UNRANKED</CaptionSmall>
       <Image
-        style={{width: "200px", marginTop: "35px"}}
+        empty
         src={
           require("../../../../assets/img/empty_state/profile_unranked.png")
             .default

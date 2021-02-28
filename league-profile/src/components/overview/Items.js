@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   flex-grow: 1;
   display: flex;
   & > div {
-    margin-right: 50px;
+    margin-right: 45px;
     :hover > p {
       color: #fff;
     }
