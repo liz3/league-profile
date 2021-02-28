@@ -49,7 +49,7 @@ const Home = () => {
             My name is Yann "Liz3" HN and i have a big passion for League, in
             the game i am a passionated Xayah OTP playing in{" "}
             <span style={{ fontStyle: "italic" }}>Shit elo</span>, as a Job and
-            in my free time also besides gaming i code a LOT. My site:{" "}
+            in my free time besides gaming & cars i code a LOT. My site:{" "}
             <a href={"https://liz3.net"} target={"_blank"} rel="noreferrer">
               Liz3.net
             </a>

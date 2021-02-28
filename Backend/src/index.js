@@ -5,14 +5,16 @@ import routes from "./routes"
 const databaseOptionsDocker = {
     host: "database",
     port: 27017,
-    name: 'league-prof'
+    name: 'league-profile-beta'
 }
 const start = async () => {
     const server = createServer();
     const databaseApi = await connectDb(databaseOptionsDocker);
     const api = new RiotApi(process.env.RIOT_API_TOKEN, databaseApi);
     if (process.env.NODE_ENV === "production") {
-
+        res.header("Access-Control-Allow-Headers", "*");
+        res.header("Access-Control-Allow-Methods", "*");
+        res.header("Access-Control-Allow-Origin", "https://lol-profile.com");
     } else {
         server.use((req, res, next) => {
 
