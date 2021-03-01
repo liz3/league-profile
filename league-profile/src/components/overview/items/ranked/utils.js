@@ -19,3 +19,22 @@ export const Emblems = {
   GRANDMASTER: GrandMasterEmblem,
   CHALLENGER: ChallengerEmblem,
 };
+
+const RANKED_KEYS = Object.keys(Emblems).reverse();
+
+const RANKED_RANK_TIER = ["I", "II", "III", "IV"];
+
+export const sortRanked = (entries) => {
+  return entries
+    .sort((a, b) => b.leaguePoints - a.leaguePoints)
+    .sort(
+      (a, b) =>
+        RANKED_RANK_TIER.indexOf(a.rank) - RANKED_RANK_TIER.indexOf(b.rank)
+    )
+    .sort((a, b) => RANKED_KEYS.indexOf(a.tier) - RANKED_KEYS.indexOf(b.tier));
+};
+export const QueueNames = {
+  RANKED_SOLO_5x5: "SOLO/DUO",
+  RANKED_FLEX_SR: "FLEX 5V5",
+  RANKED_TFT: "TFT",
+};

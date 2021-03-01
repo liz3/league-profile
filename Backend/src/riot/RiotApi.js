@@ -13,10 +13,10 @@ class RiotApi {
     this.client = axios.create();
     this.client.defaults.headers.common["X-Riot-Token"] = token;
   }
-  async _request(region, path) {
+  async _request(region, path, domain = "lol") {
     const host = getHostFromKey(region);
     if (!host) throw new Error("Unknown region");
-    const url = `https://${host}/lol${path}`;
+    const url = `https://${host}/${domain}${path}`;
     console.log("GET", url);
     const result = await this.client.get(url);
     if (result.status !== 200) throw new Error("Non 200 code " + result.status);
@@ -63,10 +63,7 @@ class RiotApi {
         return dbResult.data;
       }
     }
-    const result = await this._request(
-      region,
-      `/summoner/v4/summoners/${id}`
-    );
+    const result = await this._request(region, `/summoner/v4/summoners/${id}`);
 
     if (dbResult) {
       await collection.updateOne(
@@ -124,10 +121,16 @@ class RiotApi {
         return dbResult.data;
       }
     }
-    const result = await this._request(
+    const resultLeague = await this._request(
       region,
       `/league/v4/entries/by-summoner/${summonerId}`
     );
+    const resultTft = await this._request(
+      region,
+      `/league/v1/entries/by-summoner/${summonerId}`,
+      "tft"
+    );
+    const result = [...resultLeague, ...resultTft];
 
     if (dbResult) {
       await collection.updateOne(
@@ -223,12 +226,12 @@ class RiotApi {
         gameVersion: game.gameVersion,
         gameMode: game.gameMode,
         gameType: game.gameType,
-        gameId: game.gameId
+        gameId: game.gameId,
       };
     });
   }
   async getMatch(region, gameId) {
-    const matchData = await this._getMatch(region, gameId)
+    const matchData = await this._getMatch(region, gameId);
     return matchData;
   }
   async getUserByName(region, userName) {
@@ -244,14 +247,16 @@ class RiotApi {
         champs.find((e) => e.champId === element.champion).count += 1;
       }
     });
-    const masteryAmount = userChamps.reduce((acc, val) => acc + val.championLevel, 0)
+    const masteryAmount = userChamps.reduce(
+      (acc, val) => acc + val.championLevel,
+      0
+    );
     return {
       user: transformUser(userData),
       champs: transformChampion(
         userChamps
-        .sort((a, b) => b.championPoints - a.championPoints)
-        .sort((a, b) => b.championLevel - a.championLevel)
-         
+          .sort((a, b) => b.championPoints - a.championPoints)
+          .sort((a, b) => b.championLevel - a.championLevel)
       ),
       ranked: transformRanked(ranked),
       masteryAmount,
@@ -259,7 +264,7 @@ class RiotApi {
     };
   }
   async getUserBySummonerId(region, summonerId) {
-    const userData = await this._getUserById(region, summonerId)
+    const userData = await this._getUserById(region, summonerId);
     return {
       user: transformUser(userData),
     };

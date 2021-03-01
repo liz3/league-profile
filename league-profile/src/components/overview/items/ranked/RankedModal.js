@@ -237,7 +237,7 @@ const RankedModal = ({ items = [] }) => {
             data={items.find((entry) => entry.queueType === "RANKED_FLEX_SR")}
             name={"FLEX 5v5"}
           />
-          <RankedEntry data={null} name={"TFT"} />
+          <RankedEntry data={items.find((entry) => entry.queueType === "RANKED_TFT")} name={"TFT"} />
         </LeaguesWrapper>
         <LastSeasonWrapper>
           <SeasonBanner

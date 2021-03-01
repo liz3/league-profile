@@ -18,6 +18,7 @@ export const loadProfile = (region, name) => (dispatch, getState) => {
   }
 
   return Api.getProfile(region, name).then((res) => {
+    
     dispatch({
       type: ActionTypes.LOAD_PROFILE,
       data: res.data,

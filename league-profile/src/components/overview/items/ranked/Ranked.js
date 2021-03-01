@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import {Emblems} from './utils'
+import {Emblems, sortRanked, QueueNames} from './utils'
 import RankedModal from './RankedModal'
-const QueueNames = {
-  RANKED_SOLO_5x5: "SOLO/DUO",
-  RANKED_FLEX_SR: "FLEX 5V5"
-};
+
 
 const Wrapper = styled.div`
   min-height: 310px;
@@ -83,7 +80,7 @@ const Ranked = () => {
   const user = useSelector((state) => state.data.profile);
 
   if (!user.ranked || user.ranked.length === 0) return <EmptyState />;
-  const item = user.ranked[0];
+  const item = sortRanked(user.ranked || [])[0];
 
   return (
     <Wrapper>
