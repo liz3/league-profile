@@ -13,7 +13,7 @@ export const Emblems = {
   BRONZE: BronzeEmblem,
   SILVER: SilverEmblem,
   GOLD: GoldEmblem,
-  PlATINUM: PlatinumEmblem,
+  PLATINUM: PlatinumEmblem,
   DIAMOND: DiamondEmblem,
   MASTER: MasterEmblem,
   GRANDMASTER: GrandMasterEmblem,
