@@ -16,6 +16,7 @@ Backend:
 2. go into the backend directory and create a file called `.env.dev`
 3. in that file post the following: `RIOT_API_TOKEN=DEV_RIOT_API_TOKEN`
 4. Run `docker-compose up --build`, that will build and spinup the backend on port 3005
+
 Then Frontend:
 1. go into the league-profile folder
 2. run `yarn`
