@@ -80,6 +80,12 @@ const Home = () => {
             otherwise everything else is custom.
           </p>
           <p>
+            You can see its source here:{" "}
+            <a href={"https://github.com/liz3/league-profile"} target="_blank">
+              https://github.com/liz3/league-profile
+            </a>
+          </p>
+          <p>
             The Data comes from Riots api everyone can use, the App itself is
             written in React with redux & styled-components.
           </p>

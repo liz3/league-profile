@@ -29,7 +29,7 @@ const start = async () => {
         server.use(route.path, route.handler(api, databaseApi));
 
     const port = process.env.PORT || 3005
-    server.listen(port, () => console.log("server ready on", port))
+    server.listen(port, () => console.log("server ready on:", port))
 }
 
 start().then(() => null)
