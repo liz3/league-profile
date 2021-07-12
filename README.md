@@ -7,7 +7,6 @@ The Application has two parts, the frontend written in react/redux & styled-comp
 
 [Official instance](https://lol-profile.com)
 
-**Note**: At the moment [the prod app](https://lol-profile.com) is broken because i wait for the TFT token to be approved, only the league token was approved. Riot...
 ## Running locally
 If you want to run this locally:
 
