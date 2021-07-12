@@ -43,19 +43,27 @@ class RiotApi {
       `/summoner/v4/summoners/by-name/${encodeURIComponent(userName)}`
     );
 
+    const tftResult = await this._request(
+      region,
+      `/summoner/v1/summoners/by-name/${encodeURIComponent(userName)}`,
+      'tft'
+    );
+
+    const resultData = {...result, tftId: tftResult.id};
+
     if (dbResult) {
       await collection.updateOne(
         { _id: dbResult._id },
-        { $set: { data: result, updated: Date.now() } }
+        { $set: { data: resultData, updated: Date.now() } }
       );
     } else {
       await collection.insertOne({
-        data: result,
+        data: resultData,
         region,
         updated: Date.now(),
       });
     }
-    return result;
+    return resultData;
   }
   async _getUserById(region, id) {
     const collection = this.databaseApi.coll("users");
@@ -70,19 +78,27 @@ class RiotApi {
     }
     const result = await this._request(region, `/summoner/v4/summoners/${id}`);
 
+    const tftResult = await this._request(
+      region,
+      `/summoner/v1/summoners/by-name/${encodeURIComponent(result.name)}`,
+      'tft'
+    );
+
+    const resultData = {...result, tftId: tftResult.id};
+
     if (dbResult) {
       await collection.updateOne(
         { _id: dbResult._id },
-        { $set: { data: result, updated: Date.now() } }
+        { $set: { data: resultData, updated: Date.now() } }
       );
     } else {
       await collection.insertOne({
-        data: result,
+        data: resultData,
         region,
         updated: Date.now(),
       });
     }
-    return result;
+    return resultData;
   }
   async _getChampionMastery(region, summonerId) {
     const collection = this.databaseApi.coll("champion-mastery");
@@ -115,7 +131,7 @@ class RiotApi {
     }
     return result;
   }
-  async _getLeagues(region, summonerId) {
+  async _getLeagues(region, summonerId, tftId) {
     const collection = this.databaseApi.coll("leagues");
     const dbResult = await collection.findOne({
       region,
@@ -132,7 +148,7 @@ class RiotApi {
     );
     const resultTft = await this._request(
       region,
-      `/league/v1/entries/by-summoner/${summonerId}`,
+      `/league/v1/entries/by-summoner/${tftId}`,
       "tft"
     );
     const result = [...resultLeague, ...resultTft];
@@ -242,7 +258,7 @@ class RiotApi {
   async getUserByName(region, userName) {
     const userData = await this._getUserByName(region, userName);
     const userChamps = await this._getChampionMastery(region, userData.id);
-    const ranked = await this._getLeagues(region, userData.id);
+    const ranked = await this._getLeagues(region, userData.id, userData.tftId);
     const matchList = await this._getMatchlist(region, userData.accountId);
     const champs = [];
     matchList.forEach((element) => {
