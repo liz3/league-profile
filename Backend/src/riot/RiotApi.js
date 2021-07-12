@@ -7,18 +7,23 @@ import {
 } from "./Transformer";
 
 class RiotApi {
-  constructor(token, databaseApi) {
+  constructor(token, tftToken, databaseApi) {
     this.token = token;
+    this.tftToken = tftToken;
     this.databaseApi = databaseApi;
     this.client = axios.create();
-    this.client.defaults.headers.common["X-Riot-Token"] = token;
   }
   async _request(region, path, domain = "lol") {
     const host = getHostFromKey(region);
     if (!host) throw new Error("Unknown region");
     const url = `https://${host}/${domain}${path}`;
     console.log("GET", url);
-    const result = await this.client.get(url);
+    const opts = {
+      headers: {
+        'X-Riot-Token': domain === "tft" ? this.tftToken : this.token,
+      }
+    }
+    const result = await this.client.get(url, opts);
     if (result.status !== 200) throw new Error("Non 200 code " + result.status);
     return result.data;
   }

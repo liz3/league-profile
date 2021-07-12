@@ -10,7 +10,7 @@ const databaseOptionsDocker = {
 const start = async () => {
     const server = createServer();
     const databaseApi = await connectDb(databaseOptionsDocker);
-    const api = new RiotApi(process.env.RIOT_API_TOKEN, databaseApi);
+    const api = new RiotApi(process.env.RIOT_API_TOKEN, process.env.TFT_RIOT_TOKEN, databaseApi);
     if (process.env.NODE_ENV === "production") {
         server.use((req, res, next) => {
             res.header("Access-Control-Allow-Origin", "https://lol-profile.com");

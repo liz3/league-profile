@@ -11,10 +11,10 @@ The Application has two parts, the frontend written in react/redux & styled-comp
 ## Running locally
 If you want to run this locally:
 
-Backend: 
+Backend:
 1. Install docker/docker-compose, node/npm and yarn(`npm i -g yarn`)
 2. go into the backend directory and create a file called `.env.dev`
-3. in that file post the following: `RIOT_API_TOKEN=DEV_RIOT_API_TOKEN`
+3. in that file post the following: `RIOT_API_TOKEN=DEV_RIOT_API_TOKEN` and `TFT_RIOT_TOKEN`(for tft, when using a development token these can be the same)
 4. Run `docker-compose up --build`, that will build and spinup the backend on port 3005
 
 Then Frontend:
