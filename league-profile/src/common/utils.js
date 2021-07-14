@@ -16,7 +16,7 @@ export const formatTime = (str) => {
     var sec_num = parseInt(str, 10);
     var minutes = Math.floor(sec_num / 60);
     var seconds = sec_num - minutes * 60;
-  
+
     if (minutes < 10) {
       minutes = "0" + minutes;
     }
@@ -36,7 +36,7 @@ export const formatTime = (str) => {
     }
     return null;
   }
-  
+
   export const QueueNames = {
     440: "Ranked Flex",
     420: "Ranked Solo/Duo",
@@ -50,6 +50,7 @@ export const formatTime = (str) => {
     900: "AR Ultra Rapid Fire",
     100: "Butcher's Bridge",
     700: "Clash",
+    1400: "Ultimate Spellbook",
     2000: "Tutorial 1",
     2010: "Tutorial 2",
     2020: "Tutorial 3"

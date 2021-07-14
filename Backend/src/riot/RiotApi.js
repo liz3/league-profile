@@ -226,8 +226,9 @@ class RiotApi {
 
     return matches.map((game) => {
       const accountIdentity = game.participantIdentities.find(
-        (entry) => entry.player.accountId === accountId
+        (entry) => entry.player.accountId === accountId || entry.player.currentAccountId === accountId
       );
+      if(!accountIdentity) return null;
       const id = accountIdentity.participantId;
       const playerData = game.participants.find((e) => e.participantId === id);
       const teamId = playerData.teamId;
@@ -249,7 +250,7 @@ class RiotApi {
         gameType: game.gameType,
         gameId: game.gameId,
       };
-    });
+    }).filter(e => e !== null);
   }
   async getMatch(region, gameId) {
     const matchData = await this._getMatch(region, gameId);

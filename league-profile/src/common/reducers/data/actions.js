@@ -18,7 +18,8 @@ export const loadProfile = (region, name) => (dispatch, getState) => {
   }
 
   return Api.getProfile(region, name).then((res) => {
-    
+    if(Array.isArray(res.data.ranked) && res.data.ranked.length)
+      res.data.ranked = res.data.ranked.filter(entry => entry.queueType !== "RANKED_TFT_TURBO");
     dispatch({
       type: ActionTypes.LOAD_PROFILE,
       data: res.data,

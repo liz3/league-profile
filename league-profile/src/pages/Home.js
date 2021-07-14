@@ -81,7 +81,7 @@ const Home = () => {
           </p>
           <p>
             You can see its source here:{" "}
-            <a href={"https://github.com/liz3/league-profile"} target="_blank">
+            <a href={"https://github.com/liz3/league-profile"} target="_blank" rel="noreferrer noopener">
               https://github.com/liz3/league-profile
             </a>
           </p>

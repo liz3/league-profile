@@ -1,5 +1,6 @@
 import {Router} from 'express'
 
+
 const profileRoutes = (api, database) => {
     const router = Router();
 
