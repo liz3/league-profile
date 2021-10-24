@@ -61,24 +61,24 @@ const Header = styled.div`
   }
 `;
 
-const Team = ({ team, index }) => {
+const Team = ({ team, index, platformId }) => {
   const accentColor = index === 0 ? "rgb(10,150,170)" : "rgb(190,30,55)";
-
+  console.log("TEAM", team)
   const teamStats = {
     kills: team.players.reduce(
-      (acc, val) => acc + val.playerData.stats.kills,
+      (acc, val) => acc + val.playerData.kills,
       0
     ),
     deaths: team.players.reduce(
-      (acc, val) => acc + val.playerData.stats.deaths,
+      (acc, val) => acc + val.playerData.deaths,
       0
     ),
     assists: team.players.reduce(
-      (acc, val) => acc + val.playerData.stats.assists,
+      (acc, val) => acc + val.playerData.assists,
       0
     ),
     gold: team.players.reduce(
-      (acc, val) => acc + val.playerData.stats.goldEarned,
+      (acc, val) => acc + val.playerData.goldEarned,
       0
     ),
   };
@@ -134,6 +134,7 @@ const Team = ({ team, index }) => {
         </Header>
         {team.players.map((player, pi) => (
           <Entry
+            platformId={platformId}
             push={index === 1 && pi > 1}
             key={player.playerData.participantId}
             data={player}

@@ -1,12 +1,15 @@
 
 export const mapMatchData = (data, summonerId) => {
     let wantedUser = null;
-    const playersMapped = data.participantIdentities.map(entry => {
-        const {participantId, player} = entry;
-        const playerData = data.participants.find(e => e.participantId === participantId);
-        const focused = player.summonerId === summonerId;
+    const playersMapped = data.info.participants.map(entry => {
+        const focused = entry.summonerId === summonerId;
 
-        const dataFull = {teamId: playerData.teamId, player, playerData, focused}
+        const dataFull = {teamId: entry.teamId, player: {
+            summonerId: entry.summonerId,
+            summonerName: entry.summonerName,
+            icon: entry.profileIcon,
+            puuid: entry.puuid,
+        }, playerData: entry, focused}
         if(focused) wantedUser = dataFull;
         return dataFull;
     });
@@ -17,7 +20,7 @@ export const mapMatchData = (data, summonerId) => {
         if(t) {
             t.players.push(p)
         } else {
-            teams.push({id: p.teamId, players: [p], teamData: data.teams.find(t => t.teamId === p.teamId)})
+            teams.push({id: p.teamId, players: [p], teamData: data.info.teams.find(t => t.teamId === p.teamId)})
         }
     });
     teams.forEach(team => {
@@ -32,5 +35,5 @@ export const mapMatchData = (data, summonerId) => {
         if(b.players[0].focused) return 1;
         return 0;
     })
-    return {...data, teams, win: data.teams.find(t => t.teamId === wantedUser.teamId).win === "Win"}
+    return {...data, teams, win: data.info.teams.find(t => t.teamId === wantedUser.teamId).win}
 }

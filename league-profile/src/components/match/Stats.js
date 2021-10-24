@@ -58,27 +58,28 @@ const Entry = styled.div`
 `;
 
 const Stats = ({ data }) => {
+  console.log("stats", data)
   return (
     <Wrapper>
       <Entry index={0}>
         <img alt={""} src={IconImage} />
-        <span>{data.towerKills}</span>
+        <span>{data.objectives.tower.kills}</span>
       </Entry>
       <Entry index={1}>
         <img alt={""} src={IconImage} />
-        <span>{data.inhibitorKills}</span>
+        <span>{data.objectives.inhibitor.kills}</span>
       </Entry>
       <Entry index={2}>
         <img alt={""} src={IconImage} />
-        <span>{data.baronKills}</span>
+        <span>{data.objectives.baron.kills}</span>
       </Entry>
       <Entry index={3}>
         <img alt={""} src={IconImage} />
-        <span>{data.dragonKills}</span>
+        <span>{data.objectives.dragon.kills}</span>
       </Entry>
       <Entry index={4}>
         <img alt={""} src={IconImage} />
-        <span>{data.riftHeraldKills}</span>
+        <span>{data.objectives.riftHerald.kills}</span>
       </Entry>
     </Wrapper>
   );

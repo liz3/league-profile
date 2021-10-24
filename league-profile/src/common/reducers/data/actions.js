@@ -45,7 +45,7 @@ export const loadProfileBySummonerId = (region, summonerId) => (
 };
 export const loadMatchlist = () => (dispatch, getState) => {
   const { user, region } = getState().data.profile;
-  Api.getMatchlist(region, user.accountId).then((res) => {
+  Api.getMatchlist(region, user.id).then((res) => {
     dispatch({
       type: ActionTypes.LOAD_MATCHLIST,
       data: { matches: res.data },

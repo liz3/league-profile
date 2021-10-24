@@ -126,14 +126,14 @@ const KeyHostMap = {
   ru: "RU",
 };
 
-const Entry = ({ data, push, history }) => {
+const Entry = ({ data, push, history, platformId }) => {
   const dispatch = useDispatch();
   const patch = useSelector((state) => state.data.leagueData.version);
   const { runes, summoners, items } = useSelector(
     (state) => state.data.leagueMatchData
   );
   const { champions } = useSelector((state) => state.data.leagueData);
-  const keyStone = getRune(runes, data.playerData.stats.perk0);
+  const keyStone = getRune(runes, data.playerData.perks.styles[0].selections[0].perk);
   const champion = getEntryFromId(champions, data.playerData.championId);
 
   return (
@@ -157,7 +157,7 @@ const Entry = ({ data, push, history }) => {
                 name: "View Profile",
                 handler: () => {
                   const region = Object.keys(KeyHostMap).find(
-                    (e) => KeyHostMap[e] === data.player.currentPlatformId
+                    (e) => KeyHostMap[e] === platformId
                   );
                   Api.getProfileBySummonerId(
                     region,
@@ -181,15 +181,15 @@ const Entry = ({ data, push, history }) => {
         <div>
           <SummonerPopover
             patch={patch}
-            data={getEntryFromId(summoners, data.playerData.spell1Id)}
+            data={getEntryFromId(summoners, data.playerData.summoner1Id)}
           />
           <SummonerPopover
             patch={patch}
-            data={getEntryFromId(summoners, data.playerData.spell2Id)}
+            data={getEntryFromId(summoners, data.playerData.summoner2Id)}
           />
         </div>
         <LevelSpan focused={data.focused}>
-          {data.playerData.stats.champLevel}
+          {data.playerData.champLevel}
         </LevelSpan>
         <ChampionImage
           focused={data.focused}
@@ -206,27 +206,27 @@ const Entry = ({ data, push, history }) => {
                 push={push}
                 patch={patch}
                 key={index}
-                data={items[data.playerData.stats[`item${index}`]]}
-                id={data.playerData.stats[`item${index}`]}
+                data={items[data.playerData[`item${index}`]]}
+                id={data.playerData[`item${index}`]}
               />
             );
           })}
       </ItemWrapper>
       <StatsWrapper focused={data.focused}>
-        <span>{data.playerData.stats.kills}</span>/
-        <span>{data.playerData.stats.deaths}</span>/
-        <span>{data.playerData.stats.assists}</span>
+        <span>{data.playerData.kills}</span>/
+        <span>{data.playerData.deaths}</span>/
+        <span>{data.playerData.assists}</span>
       </StatsWrapper>
       <CsWrapper focused={data.focused}>
         <span>
           {" "}
-          {data.playerData.stats.neutralMinionsKilled +
-            data.playerData.stats.totalMinionsKilled}
+          {data.playerData.neutralMinionsKilled +
+            data.playerData.totalMinionsKilled}
         </span>
       </CsWrapper>
       <GoldWrapper focused={data.focused}>
         <span>
-          {data.playerData.stats.goldEarned.toLocaleString(undefined, {
+          {data.playerData.goldEarned.toLocaleString(undefined, {
             style: "decimal",
           })}
         </span>

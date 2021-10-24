@@ -24,7 +24,21 @@ const KeyHostMap = {
     "tr": "TR1",
     "ru": "RU"
 }
-
+export const getMatchRouting = key => {
+    switch(key) {
+        case "na":
+        case "br":
+        case "la-one":
+        case "la-two":
+        case "oc":
+            return "americas";
+        case "kr":
+        case "jp":
+            return "asia";
+        default:
+            return "europe"
+    };
+}
 export const getHostFromKey = key => {
     if(!KeyHostMap[key]) return null;
     return HostMap[KeyHostMap[key]];

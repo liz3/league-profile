@@ -94,7 +94,7 @@ const MatchRoot = ({
       {mapped && ready ? (
         <TeamsWrapper>
           {mapped.teams.map((entry, index) => (
-            <Team key={entry.id} index={index} team={entry} />
+            <Team key={entry.id} platformId={data.info.platformId} index={index} team={entry} />
           ))}
         </TeamsWrapper>
       ) : null}

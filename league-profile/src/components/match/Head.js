@@ -63,7 +63,9 @@ align-items: center;
 `
 
 const Head = ({data}) => {
-    const map = maps.find(m => m.mapId === data.mapId);
+    console.log("DATA", data)
+
+    const map = maps.find(m => m.mapId === data.info.mapId);
     return <Wrapper>
         <div>
 
@@ -73,13 +75,13 @@ const Head = ({data}) => {
             <InfoPart>
                 <span>{map.mapName}</span>
                 <span>&#183;</span>
-                <span>{QueueNames[data.queueId]}</span>
+                <span>{QueueNames[data.info.queueId]}</span>
                 <span>&#183;</span>
-                <span>{formatTime(data.gameDuration)}</span>
+                <span>{formatTime(data.info.gameDuration)}</span>
                 <span>&#183;</span>
-                <span>{new Date(data.gameCreation).toLocaleDateString()}</span>
+                <span>{new Date(data.info.gameCreation).toLocaleDateString()}</span>
                 <span>&#183;</span>
-                <span>GameID: {data.gameId}</span>
+                <span>GameID: {data.info.gameId}</span>
             </InfoPart>
         </TextSection>
         </div>

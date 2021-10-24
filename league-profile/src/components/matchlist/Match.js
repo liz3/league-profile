@@ -217,7 +217,7 @@ const Match = ({ data, history }) => {
   return (
     <RootWrapper
       onClick={() =>
-        history.push(`/match/${user.region}/${data.gameId}/${user.user.id}`)
+        history.push(`/match/${user.region}/${data.matchIdNew}/${user.user.id}`)
       }
     >
       <LeftBar />
@@ -228,7 +228,7 @@ const Match = ({ data, history }) => {
           <img alt={""} src={getChampionAvatar(patch, entry.id)} />
         </ChampImg>
         <div>
-          <span>{data.playerData.stats.champLevel}</span>
+          <span>{data.playerData.champLevel}</span>
         </div>
       </ImageWrapper>
       <MetaPart>
@@ -241,14 +241,14 @@ const Match = ({ data, history }) => {
             alt={""}
             src={getSummonerImage(
               patch,
-              getEntryFromId(summoners, data.playerData.spell1Id).id
+              getEntryFromId(summoners, data.playerData.summoner1Id).id
             )}
           />
           <img
             alt={""}
             src={getSummonerImage(
               patch,
-              getEntryFromId(summoners, data.playerData.spell2Id).id
+              getEntryFromId(summoners, data.playerData.summoner2Id).id
             )}
           />
         </SpellsWrapper>
@@ -259,12 +259,12 @@ const Match = ({ data, history }) => {
             .fill()
             .map((_, index) => (
               <Item key={index}>
-                {data.playerData.stats[`item${index}`] ? (
+                {data.playerData[`item${index}`] ? (
                   <img
                     alt={""}
                     src={getItemImage(
                       patch,
-                      data.playerData.stats[`item${index}`]
+                      data.playerData[`item${index}`]
                     )}
                   />
                 ) : null}
@@ -273,15 +273,15 @@ const Match = ({ data, history }) => {
         </ItemContainer>
         <StatsPart>
           <span style={{ width: "45%" }}>
-            {data.playerData.stats.kills} / {data.playerData.stats.deaths} /{" "}
-            {data.playerData.stats.assists}
+            {data.playerData.kills} / {data.playerData.deaths} /{" "}
+            {data.playerData.assists}
           </span>
           <span style={{ width: "25%" }}>
-            {data.playerData.stats.neutralMinionsKilled +
-              data.playerData.stats.totalMinionsKilled}
+            {data.playerData.neutralMinionsKilled +
+              data.playerData.totalMinionsKilled}
           </span>
           <span style={{ width: "30%", textAlign: "right" }}>
-            {data.playerData.stats.goldEarned.toLocaleString(undefined, {
+            {data.playerData.goldEarned.toLocaleString(undefined, {
               style: "decimal",
             })}
           </span>

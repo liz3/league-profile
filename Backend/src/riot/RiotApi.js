@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getHostFromKey } from "./utils";
+import { getHostFromKey, getMatchRouting } from "./utils";
 import {
   transformRanked,
   transformChampion,
@@ -15,14 +15,18 @@ class RiotApi {
   }
   async _request(region, path, domain = "lol") {
     const host = getHostFromKey(region);
+
     if (!host) throw new Error("Unknown region");
-    const url = `https://${host}/${domain}${path}`;
+    const url =
+      domain === "match"
+        ? `https://${getMatchRouting(region)}.api.riotgames.com/lol${path}`
+        : `https://${host}/${domain}${path}`;
     console.log("GET", url);
     const opts = {
       headers: {
-        'X-Riot-Token': domain === "tft" ? this.tftToken : this.token,
-      }
-    }
+        "X-Riot-Token": domain === "tft" ? this.tftToken : this.token,
+      },
+    };
     const result = await this.client.get(url, opts);
     if (result.status !== 200) throw new Error("Non 200 code " + result.status);
     return result.data;
@@ -46,10 +50,10 @@ class RiotApi {
     const tftResult = await this._request(
       region,
       `/summoner/v1/summoners/by-name/${encodeURIComponent(userName)}`,
-      'tft'
+      "tft"
     );
 
-    const resultData = {...result, tftId: tftResult.id};
+    const resultData = { ...result, tftId: tftResult.id };
 
     if (dbResult) {
       await collection.updateOne(
@@ -81,10 +85,10 @@ class RiotApi {
     const tftResult = await this._request(
       region,
       `/summoner/v1/summoners/by-name/${encodeURIComponent(result.name)}`,
-      'tft'
+      "tft"
     );
 
-    const resultData = {...result, tftId: tftResult.id};
+    const resultData = { ...result, tftId: tftResult.id };
 
     if (dbResult) {
       await collection.updateOne(
@@ -168,7 +172,7 @@ class RiotApi {
     }
     return result;
   }
-  async _getMatchlist(region, accountId) {
+  async _getMatchlist(region, accountId, puuid) {
     const collection = this.databaseApi.coll("matchlist");
     const dbResult = await collection.findOne({
       region,
@@ -181,9 +185,10 @@ class RiotApi {
     }
     const resultRaw = await this._request(
       region,
-      `/match/v4/matchlists/by-account/${accountId}?endIndex=20`
+      `/match/v5/matches/by-puuid/${puuid}/ids?count=20`,
+      "match"
     );
-    const result = resultRaw.matches;
+    const result = resultRaw;
     if (dbResult) {
       await collection.updateOne(
         { _id: dbResult._id },
@@ -208,7 +213,7 @@ class RiotApi {
     if (dbResult) {
       return dbResult.data;
     }
-    const result = await this._request(region, `/match/v4/matches/${matchId}`);
+    const result = await this._request(region, `/match/v5/matches/${matchId}`, "match");
     await collection.insertOne({
       data: result,
       region,
@@ -219,38 +224,40 @@ class RiotApi {
     return result;
   }
   async getMatchHistory(region, accountId) {
-    const matchList = await this._getMatchlist(region, accountId);
+    const userData = await this._getUserById(region, accountId);
+    const matchList = await this._getMatchlist(region, accountId, userData.puuid);
     const matches = await Promise.all(
-      matchList.map((elem) => this._getMatch(region, elem.gameId))
+      matchList.map((elem) => this._getMatch(region, elem))
     );
 
-    return matches.map((game) => {
-      const accountIdentity = game.participantIdentities.find(
-        (entry) => entry.player.accountId === accountId || entry.player.currentAccountId === accountId
-      );
-      if(!accountIdentity) return null;
-      const id = accountIdentity.participantId;
-      const playerData = game.participants.find((e) => e.participantId === id);
-      const teamId = playerData.teamId;
-      const team = game.teams.find((t) => t.teamId === teamId);
-      const win = team.win === "Win";
+    return matches
+      .map((game) => {
+        const playerData = game.info.participants.find(
+          (e) => e.summonerId === userData.id
+        );
+        const teamId = playerData.teamId;
+        const team = game.info.teams.find((t) => t.teamId === teamId);
+        const win = playerData.win;
 
-      return {
-        win,
-        team,
-        playerData,
-        platformId: game.platformId,
-        gameCreation: game.gameCreation,
-        gameDuration: game.gameDuration,
-        queueId: game.queueId,
-        mapId: game.mapId,
-        seasonId: game.seasonId,
-        gameVersion: game.gameVersion,
-        gameMode: game.gameMode,
-        gameType: game.gameType,
-        gameId: game.gameId,
-      };
-    }).filter(e => e !== null);
+        return {
+          matchIdNew: game.metadata.matchId,
+          win,
+          team,
+          playerData,
+          champion: playerData.championId,
+   //       platformId: game.platformId,
+          gameCreation: game.info.gameCreation,
+          gameDuration: game.info.gameDuration,
+          queueId: game.info.queueId,
+          mapId: game.info.mapId,
+       //   seasonId: game.seasonId,
+          gameVersion: game.info.gameVersion,
+          gameMode: game.info.gameMode,
+     //     gameType: game.gameType,
+          gameId: game.info.gameId,
+        };
+      })
+      .filter((e) => e !== null);
   }
   async getMatch(region, gameId) {
     const matchData = await this._getMatch(region, gameId);
@@ -260,9 +267,9 @@ class RiotApi {
     const userData = await this._getUserByName(region, userName);
     const userChamps = await this._getChampionMastery(region, userData.id);
     const ranked = await this._getLeagues(region, userData.id, userData.tftId);
-    const matchList = await this._getMatchlist(region, userData.accountId);
+    const matches = await this.getMatchHistory(region, userData.id);
     const champs = [];
-    matchList.forEach((element) => {
+    matches.forEach((element) => {
       if (!champs.find((e) => e.champId === element.champion)) {
         champs.push({ champId: element.champion, count: 1 });
       } else {

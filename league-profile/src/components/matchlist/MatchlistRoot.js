@@ -84,6 +84,7 @@ const MatchlistRoot = () => {
     dispatch(loadLeagueMatchData());
   }, [dispatch]);
   const { matches, loaded } = useSelector((state) => state.data.matchlist);
+  console.log(matches)
   return (
     <Wrapper>
       <ListWrapper>
