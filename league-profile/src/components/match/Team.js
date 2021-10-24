@@ -63,7 +63,6 @@ const Header = styled.div`
 
 const Team = ({ team, index, platformId }) => {
   const accentColor = index === 0 ? "rgb(10,150,170)" : "rgb(190,30,55)";
-  console.log("TEAM", team)
   const teamStats = {
     kills: team.players.reduce(
       (acc, val) => acc + val.playerData.kills,

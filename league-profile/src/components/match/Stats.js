@@ -58,7 +58,6 @@ const Entry = styled.div`
 `;
 
 const Stats = ({ data }) => {
-  console.log("stats", data)
   return (
     <Wrapper>
       <Entry index={0}>

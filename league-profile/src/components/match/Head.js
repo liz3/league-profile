@@ -63,8 +63,7 @@ align-items: center;
 `
 
 const Head = ({data}) => {
-    console.log("DATA", data)
-
+    console.log(data)
     const map = maps.find(m => m.mapId === data.info.mapId);
     return <Wrapper>
         <div>

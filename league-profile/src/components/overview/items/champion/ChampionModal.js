@@ -139,7 +139,6 @@ const EntryWrapper = styled.div`
 const Entry = ({ data, size, adjust }) => {
   const { loaded, champions } = useSelector((state) => state.data.leagueData);
   if (!loaded) return null;
-  console.log(data);
   const entry = data ? getEntryFromId(champions, data.championId) : null;
 
   return (

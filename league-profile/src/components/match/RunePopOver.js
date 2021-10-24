@@ -83,7 +83,6 @@ const Caret = styled.img`
 `;
 
 const RunePopover = ({ data }) => {
-  console.log("rune", data)
   return (
     <Wrapper>
       <ModalRoot>
