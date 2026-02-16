@@ -4,10 +4,10 @@ import {Router} from 'express'
 const profileRoutes = (api, database) => {
     const router = Router();
 
-    router.get('/:region/:name', async (req, res) => {
+    router.get('/by-name/:region/:name/:tag', async (req, res) => {
       try {
-        const {region, name} = req.params;
-        const result = await api.getUserByName(region, name)
+        const {region, name, tag} = req.params;
+        const result = await api.getUserByName(region, name, tag)
         res.json(result)
       }catch(err) {
         if(err.response && err.response.status === 404) {

@@ -132,7 +132,7 @@ const ItemPopover = ({ data, patch, id, push }) => {
           <Caret
           alt={""}
             push={push}
-            src={require("../../assets/img/tooltip-caret.png").default}
+            src={require("../../assets/img/tooltip-caret.png")}
           />
           <ModalContent>
             <div>
@@ -151,7 +151,7 @@ const ItemPopover = ({ data, patch, id, push }) => {
                     style={{ width: "24px", height: "auto" }}
                     src={
                       require("../../assets/img/match/mask-icon-gold.png")
-                        .default
+                        
                     }
                   />
                   <span>{data.gold.total}</span>

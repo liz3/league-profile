@@ -29,8 +29,8 @@ function App() {
         <Provider store={Store}>
         <ContentWrapper>
           <Switch>
-            <Route path={"/profile/:region/:name"} component={Profile}  exact/>
-            <Route path={"/profile/:region/:name/matchlist"} component={Matchlist} exact />
+            <Route path={"/profile/:region/:name/:tag"} component={Profile}  exact/>
+            <Route path={"/profile/:region/:name/:tag/matchlist"} component={Matchlist} exact />
             <Route path={"/match/:region/:matchId/:summonerId"} component={Match} exact/>
             <Route component={Home} />
           </Switch>

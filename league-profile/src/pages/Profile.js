@@ -28,7 +28,7 @@ const SearchContainer = styled.div`
 `;
 const Profile = ({ match }) => {
   const dispatch = useDispatch();
-  const { region, name } = match.params;
+  const { region, name,tag } = match.params;
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   useEffect(() => {
@@ -36,7 +36,7 @@ const Profile = ({ match }) => {
     setLoading(true);
     dispatch(setPage("profile"))
 
-    dispatch(loadProfile(region, name))
+    dispatch(loadProfile(region, name, tag))
       .then((res) => {
         setLoading(false);
       })

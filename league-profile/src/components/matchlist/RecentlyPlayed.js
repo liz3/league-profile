@@ -18,7 +18,6 @@ const Title = styled.p`
   font-size: 18px;
   @media (min-width: 1780px) {
     font-size: 23px;
-
   }
   color: rgb(240, 230, 210);
   text-transform: uppercase;
@@ -71,10 +70,14 @@ const CaptionSpan = styled.p`
   font-size: 16px;
   @media (min-width: 1780px) {
     font-size: 19px;
-
   }
   color: rgb(160, 155, 140);
 `;
+const getBannerBackground = (level) => {
+  if (level < 5) return `mastery-banner-1.svg`;
+  if (level < 10) return `mastery-banner-2.svg`;
+  return `mastery-banner-3.svg`;
+};
 const RecentlyPlayed = ({ matches = [] }) => {
   const patch = useSelector((state) => state.data.leagueData.version);
   const champs = {};
@@ -113,6 +116,13 @@ const RecentlyPlayed = ({ matches = [] }) => {
     .sort((a, b) => b.count - a.count)
     .slice(0, 3);
 
+  /*
+position: absolute;
+  left: -7%;
+  top: 55px;
+  width: 110%;
+}
+ */
   return (
     <Wrapper>
       <Title>Recently Played Champion</Title>
@@ -124,13 +134,19 @@ const RecentlyPlayed = ({ matches = [] }) => {
             <Item key={c.id}>
               <img
                 alt={""}
-                style={{ position: "absolute", left: 0, top: "0px" }}
-                src={
-                  require(`../../assets/img/champion_mastery/banner-mastery-small-lvl${c.level}.png`)
-                    .default
-                }
+                style={{ position: "absolute", left: 0, top: "93px" }}
+                src={require(
+                  `../../assets/img/champion_mastery/${getBannerBackground(c.level)}`,
+                )}
               />
+
               <img alt={""} src={getChampionAvatar(patch, champData.id)} />
+              <img
+                style={{position: "absolute", left: "-5%", top: "55px", width: "110%"}}
+                src={require(
+                  `../../assets/img/champion_mastery/mastery_level${c.level > 10 ? 10 : c.level}.png`,
+                )}
+              />
               <PercentSpan>{c.percent} %</PercentSpan>
             </Item>
           );
@@ -148,39 +164,27 @@ const RecentlyPlayed = ({ matches = [] }) => {
       <Title>Recent Activity</Title>
       <List>
         <ActivityBar
-          icon={
-            require("../../assets/img/role-icons/roleicon-fighter.png").default
-          }
+          icon={require("../../assets/img/role-icons/roleicon-fighter.png")}
           percent={counts["Fighter"] > 0 ? (counts["Fighter"] / 20) * 100 : 0}
         />
         <ActivityBar
-          icon={
-            require("../../assets/img/role-icons/roleicon-tank.png").default
-          }
+          icon={require("../../assets/img/role-icons/roleicon-tank.png")}
           percent={counts["Tank"] > 0 ? (counts["Tank"] / 20) * 100 : 0}
         />
         <ActivityBar
-          icon={
-            require("../../assets/img/role-icons/roleicon-mage.png").default
-          }
+          icon={require("../../assets/img/role-icons/roleicon-mage.png")}
           percent={counts["Mage"] > 0 ? (counts["Mage"] / 20) * 100 : 0}
         />
         <ActivityBar
-          icon={
-            require("../../assets/img/role-icons/roleicon-assassin.png").default
-          }
+          icon={require("../../assets/img/role-icons/roleicon-assassin.png")}
           percent={counts["Assassin"] > 0 ? (counts["Assassin"] / 20) * 100 : 0}
         />
         <ActivityBar
-          icon={
-            require("../../assets/img/role-icons/roleicon-support.png").default
-          }
+          icon={require("../../assets/img/role-icons/roleicon-support.png")}
           percent={counts["Support"] > 0 ? (counts["Support"] / 20) * 100 : 0}
         />
         <ActivityBar
-          icon={
-            require("../../assets/img/role-icons/roleicon-marksman.png").default
-          }
+          icon={require("../../assets/img/role-icons/roleicon-marksman.png")}
           percent={counts["Marksman"] > 0 ? (counts["Marksman"] / 20) * 100 : 0}
         />
       </List>

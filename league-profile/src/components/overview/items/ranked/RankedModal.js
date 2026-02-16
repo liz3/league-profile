@@ -5,18 +5,23 @@ import { Emblems } from "./utils";
 const RankedBigWrapper = styled.div`
   position: absolute;
   height: 300px;
-  width: 1050px;
+ width: 1300px;
+  max-width: 80vw;
   @media (min-width: 1780px) {
     height: 360px;
     width: 1500px;
     top: -400px;
     left: -52px;
   }
-  max-width: 68vw;
+  background: #0a0a0a;
+
+ 
   top: -330px;
-  left: -37px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  & > div:nth-child(3) {
+  left: -222px;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+  & > div:nth-child(2) {
     border: 2px solid rgb(70, 55, 20);
     background: #0a0a0a;
     height: 100%;
@@ -39,7 +44,6 @@ const BottomLine = styled.div`
   z-index: 0;
   @media (min-width: 1780px) {
     height: 37px;
-
   }
 `;
 const Caret = styled.img`
@@ -53,10 +57,10 @@ const Caret = styled.img`
   z-index: 10;
   width: 30px;
   height: auto;
-  left: 103px;
+  left: 300px;
 `;
 const LeaguesWrapper = styled.div`
-  width: 73%;
+  width: 80%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -65,7 +69,7 @@ const LeaguesWrapper = styled.div`
   border-right: 1px solid rgb(70, 55, 20);
 `;
 const LastSeasonWrapper = styled.div`
-  width: 28%;
+  width: 20%;
   position: relative;
   overflow: hidden;
   height: 100%;
@@ -113,14 +117,14 @@ const RankedEntryWrapper = styled.div`
   position: relative;
   & img {
     margin: 0 auto;
-    width: ${(props) => (props.present ? "125" : "133")}px;
+    width: ${(props) => (props.present ? "165" : "183")}px;
     margin-top: ${(props) => (props.present ? "0" : "-15")}px;
     @media (min-width: 1780px) {
       width: ${(props) => (props.present ? "162" : "172")}px;
       margin-top: ${(props) => (props.present ? "0" : "-20")}px;
     }
     height: auto;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
   }
 `;
 const EntryNameCaption = styled.p`
@@ -129,10 +133,9 @@ const EntryNameCaption = styled.p`
   color: ${(props) =>
     props.present ? "rgb(160, 155, 140)" : "rgb(60, 60, 65)"};
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   @media (min-width: 1780px) {
     font-size: 25px;
-
   }
   letter-spacing: 2px;
   font-family: "LoL Display";
@@ -143,10 +146,9 @@ const RankCaption = styled.p`
   color: ${(props) =>
     props.present ? "rgb(228, 219, 200)" : "rgb(60, 60, 65)"};
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   @media (min-width: 1780px) {
     font-size: 18px;
-
   }
   letter-spacing: 1px;
   font-family: "LoL Display";
@@ -156,17 +158,15 @@ const Line = styled.div`
   background: rgb(108, 82, 38);
   width: 80px;
   margin: 4px 0 8px 0;
-
 `;
 const InfoLine = styled.p`
   margin: 0;
-  font-size: 20px;
+  font-size: 16px !important;
   text-transform: uppercase;
   color: rgb(160, 155, 140);
   font-size: 16px;
   @media (min-width: 1780px) {
     font-size: 19px;
-
   }
 `;
 const LineOne = styled.div`
@@ -196,8 +196,7 @@ const RankedEntry = ({ data, name }) => {
         src={
           data
             ? Emblems[data.tier]
-            : require("../../../../assets/img/empty_state/profile_unranked_tooltip.png")
-                .default
+            : require("../../../../assets/img/empty_state/profile_unranked.png")
         }
       />
       <EntryNameCaption present={data}>{name}</EntryNameCaption>
@@ -221,14 +220,9 @@ const RankedEntry = ({ data, name }) => {
 const RankedModal = ({ items = [] }) => {
   return (
     <RankedBigWrapper>
-      <BottomLine />
-      <Caret
-        src={require("../../../../assets/img/tooltip-caret.png").default}
-      />
+      <Caret src={require("../../../../assets/img/tooltip-caret.png")} />
       <div>
         <LeaguesWrapper>
-          <LineOne />
-          <LineTwo />
           <RankedEntry
             data={items.find((entry) => entry.queueType === "RANKED_SOLO_5x5")}
             name={"Solo/Duo"}
@@ -237,17 +231,16 @@ const RankedModal = ({ items = [] }) => {
             data={items.find((entry) => entry.queueType === "RANKED_FLEX_SR")}
             name={"FLEX 5v5"}
           />
-          <RankedEntry data={items.find((entry) => entry.queueType === "RANKED_TFT")} name={"TFT"} />
+          <RankedEntry
+            data={items.find((entry) => entry.queueType === "RANKED_TFT")}
+            name={"TFT"}
+          />
+          <RankedEntry
+            data={items.find((entry) => entry.queueType === "RANKED_TFT")}
+            name={"DOUBLE UP"}
+          />
         </LeaguesWrapper>
         <LastSeasonWrapper>
-          <SeasonBanner
-            src={require("../../../../assets/img/banners/still.png").default}
-          />
-          <SeasonBannerBottom
-            src={
-              require("../../../../assets/img/banners/trim_default.png").default
-            }
-          />
           <LastSeasonCaption>
             <p>Last season's Rank</p>
             <p style={{ fontSize: "18px" }}>Unranked</p>

@@ -61,7 +61,7 @@ const Header = styled.div`
   }
 `;
 
-const Team = ({ team, index, platformId }) => {
+const Team = ({ team, index, platformId, region }) => {
   const accentColor = index === 0 ? "rgb(10,150,170)" : "rgb(190,30,55)";
   const teamStats = {
     kills: team.players.reduce(
@@ -107,27 +107,27 @@ const Team = ({ team, index, platformId }) => {
             </span>
             <img
             alt={""}
-              src={require("../../assets/img/match/mask-icon-gold.png").default}
+              src={require("../../assets/img/match/mask-icon-gold.png")}
             />
           </div>
           <div style={{ width: "9%" }}>
             <img
             alt={""}
               src={
-                require("../../assets/img/match/mask-icon-offense.png").default
+                require("../../assets/img/match/mask-icon-offense.png")
               }
             />
           </div>
           <div style={{ width: "14%" }}>
             <img
             alt={""}
-              src={require("../../assets/img/match/mask-icon-cs.png").default}
+              src={require("../../assets/img/match/mask-icon-cs.png")}
             />
           </div>
           <div style={{ width: "3%" }}>
             <img
             alt={""}
-              src={require("../../assets/img/match/mask-icon-gold.png").default}
+              src={require("../../assets/img/match/mask-icon-gold.png")}
             />
           </div>
         </Header>
@@ -137,6 +137,7 @@ const Team = ({ team, index, platformId }) => {
             push={index === 1 && pi > 1}
             key={player.playerData.participantId}
             data={player}
+            region={region}
           />
         ))}
       </StatsPart>

@@ -48,7 +48,7 @@ const Wrapper = styled.div`
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setPage("homw"));
+    dispatch(setPage("home"));
   }, [dispatch]);
   return (
     <Wrapper>

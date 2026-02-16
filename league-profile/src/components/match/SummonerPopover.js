@@ -95,7 +95,7 @@ const SummonerPopover = ({ data, patch }) => {
     <Wrapper>
       <ModalRoot>
         <BottomLine />
-        <Caret alt={""} src={require("../../assets/img/tooltip-caret.png").default} />
+        <Caret alt={""} src={require("../../assets/img/tooltip-caret.png")} />
         <ModalContent>
           <div>
             <img alt={""} src={getSummonerImage(patch, data.id)} />

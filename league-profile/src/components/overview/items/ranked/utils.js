@@ -3,6 +3,7 @@ import BronzeEmblem from "../../../../assets/img/ranked/Emblem_Bronze.png";
 import SilverEmblem from "../../../../assets/img/ranked/Emblem_Silver.png";
 import GoldEmblem from "../../../../assets/img/ranked/Emblem_Gold.png";
 import PlatinumEmblem from "../../../../assets/img/ranked/Emblem_Platinum.png";
+import EmeraldEmblem from "../../../../assets/img/ranked/Emblem_Emerald.png";
 import DiamondEmblem from "../../../../assets/img/ranked/Emblem_Diamond.png";
 import MasterEmblem from "../../../../assets/img/ranked/Emblem_Master.png";
 import GrandMasterEmblem from "../../../../assets/img/ranked/Emblem_Grandmaster.png";
@@ -14,6 +15,7 @@ export const Emblems = {
   SILVER: SilverEmblem,
   GOLD: GoldEmblem,
   PLATINUM: PlatinumEmblem,
+  EMERALD: EmeraldEmblem,
   DIAMOND: DiamondEmblem,
   MASTER: MasterEmblem,
   GRANDMASTER: GrandMasterEmblem,

@@ -26,10 +26,10 @@ const SearchContainer = styled.div`
 
 const Matchlist = ({ match }) => {
   const dispatch = useDispatch();
-  const { region, name } = match.params;
+  const { region, name,tag } = match.params;
   useEffect(() => {
     dispatch(setPage("matchlist"));
-    dispatch(loadProfile(region, name)).then((res) => {
+    dispatch(loadProfile(region, name, tag)).then((res) => {
       dispatch(loadMatchlist());
     });
   }, [region, name, dispatch]);

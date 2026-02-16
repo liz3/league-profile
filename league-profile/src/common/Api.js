@@ -4,8 +4,8 @@ class Api {
         this.instance = axios.create({baseURL: window.location.hostname.includes("localhost") ? "http://localhost:3005" : "https://api.lol-profile.com"})
     }
 
-    getProfile(region, name) {
-        return this.instance.get(`/user/${region}/${encodeURIComponent(name)}`)
+    getProfile(region, name, tag) {
+        return this.instance.get(`/user/by-name/${region}/${encodeURIComponent(name)}/${encodeURIComponent(tag)}`) 
     }
     getProfileBySummonerId(region, id) {
         return this.instance.get(`/user/by-id/${region}/${id}`)

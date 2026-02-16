@@ -45,13 +45,16 @@ export const formatTime = (str) => {
     840: "Co-op vs. AI",
     850: "Co-op vs. AI",
     450: "ARAM",
-    400: "Draft Pick",
+    400: "Normal (Draft Pick)",
     430: "Blind Pick",
     900: "AR Ultra Rapid Fire",
     100: "Butcher's Bridge",
     700: "Clash",
     1400: "Ultimate Spellbook",
+    1700: "Arena",
+    1710: "Arena",
     2000: "Tutorial 1",
     2010: "Tutorial 2",
-    2020: "Tutorial 3"
+    2020: "Tutorial 3",
+    2400: "ARAM: Mayhem"
   };

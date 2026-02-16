@@ -126,16 +126,16 @@ const KeyHostMap = {
   ru: "RU",
 };
 
-const Entry = ({ data, push, history, platformId }) => {
+const Entry = ({ data, push, history, platformId, region }) => {
   const dispatch = useDispatch();
   const patch = useSelector((state) => state.data.leagueData.version);
   const { runes, summoners, items } = useSelector(
     (state) => state.data.leagueMatchData
   );
+
   const { champions } = useSelector((state) => state.data.leagueData);
   const keyStone = getRune(runes, data.playerData.perks.styles[0].selections[0].perk);
   const champion = getEntryFromId(champions, data.playerData.championId);
-
   return (
     <Wrapper
       onContextMenu={(ev) => {
@@ -156,9 +156,7 @@ const Entry = ({ data, push, history, platformId }) => {
                 key: "view_profile",
                 name: "View Profile",
                 handler: () => {
-                  const region = Object.keys(KeyHostMap).find(
-                    (e) => KeyHostMap[e] === platformId
-                  );
+              
                   Api.getProfileBySummonerId(
                     region,
                     data.player.summonerId
@@ -166,6 +164,8 @@ const Entry = ({ data, push, history, platformId }) => {
                     history.push(
                       `/profile/${region}/${encodeURIComponent(
                         res.data.user.name
+                      )}/${encodeURIComponent(
+                        res.data.user.tag
                       )}`
                     );
                   });
@@ -195,7 +195,7 @@ const Entry = ({ data, push, history, platformId }) => {
           focused={data.focused}
           src={getChampionAvatar(patch, champion.id)}
         />
-        <NameSpan focused={data.focused}>{data.player.summonerName}</NameSpan>
+        <NameSpan focused={data.focused}>{data.playerData.riotIdGameName}</NameSpan>
       </MetaWrapper>
       <ItemWrapper>
         {Array(7)
@@ -213,9 +213,10 @@ const Entry = ({ data, push, history, platformId }) => {
           })}
       </ItemWrapper>
       <StatsWrapper focused={data.focused}>
-        <span>{data.playerData.kills}</span>/
-        <span>{data.playerData.deaths}</span>/
-        <span>{data.playerData.assists}</span>
+
+        <span>{data?.playerData?.kills}</span>/
+        <span>{data?.playerData?.deaths}</span>/
+        <span>{data?.playerData?.assists}</span>
       </StatsWrapper>
       <CsWrapper focused={data.focused}>
         <span>

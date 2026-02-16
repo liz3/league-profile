@@ -2,14 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { getChampionAvatar, getEntryFromId } from "../../../../common/utils";
-import NoChampImg from "../../../../assets/img/champion_mastery/mastery_framelevel0.png"
+import NoChampImg from "../../../../assets/img/champion_mastery/mastery_framelevel0.png";
 
 const Wrapper = styled.div`
   position: relative;
   width: ${(props) => props.size || "120"}px;
   @media (min-width: 1780px) {
     width: ${(props) => props.size * 1.3 || "140"}px;
-
   }
   height: auto;
 `;
@@ -31,12 +30,10 @@ const BorderImage = styled.img`
 `;
 const EmblemBackground = styled.img`
   position: absolute;
-  left: ${(props) => (props.offsetRender ? 8 : 8)}%;
-  width: ${(props) => (props.offsetRender ? 81 : 81)}%;
+  left: ${(props) => (props.offsetRender ? 4 : 4)}%;
+  width: ${(props) => (props.offsetRender ? 90 : 90)}%;
   height: auto;
-  top: ${(props) => (props.offsetRender ? 44 : 44)}%;
-  
-  
+  top: ${(props) => (props.offsetRender ? 74 : 74)}%;
 `;
 const EmblemBackgroundEmpty = styled.img`
   position: absolute;
@@ -48,12 +45,20 @@ const EmblemBackgroundEmpty = styled.img`
 
 `;
 const Emblem = styled.img`
-  position: absolute;
-  left: ${(props) => (props.offsetRender ? 12 : 1.5)}%;
-  width: ${(props) => (props.offsetRender ? 75 : 95)}%;
+position: absolute;
+  left: 8.5%;
+  width: 84%;
   height: auto;
-  top: ${(props) => (props.offsetRender ? 78 : 75)}%;
+  top: 57%;
 `;
+
+const getBannerBackground = level => {
+  if(level <5)
+    return `mastery-banner-1.svg`;
+  if(level < 10)
+    return `mastery-banner-2.svg`
+   return `mastery-banner-3.svg`
+}
 
 const ChampImg = ({ champId, level, size, offset }) => {
   const { loaded, champions } = useSelector((state) => state.data.leagueData);
@@ -64,32 +69,32 @@ const ChampImg = ({ champId, level, size, offset }) => {
 
   return (
     <Wrapper size={size}>
-      {champId ?  <EmblemBackground
-        src={
-          require(`../../../../assets/img/champion_mastery/mastery_level${level}banner.png`)
-            .default
-        }
-        offsetRender={offset}
-      />  :  <EmblemBackgroundEmpty
-      src={
-        require(`../../../../assets/img/champion_mastery/mastery_level${level}banner.png`)
-          .default
-      }
-      offsetRender={offset}
-    />}
+      {champId ? (
+        <EmblemBackground
+          src={require(
+            `../../../../assets/img/champion_mastery/${getBannerBackground(level)}`,
+          )}
+          offsetRender={offset}
+        />
+      ) : (
+        <EmblemBackgroundEmpty
+          src={require(
+            `../../../../assets/img/champion_mastery/mastery_level${level > 7 ? 7 : level}banner.png`,
+          )}
+          offsetRender={offset}
+        />
+      )}
       <ChampionImage src={url || NoChampImg} />
-      {champId ? <BorderImage
-        src={
-          require("../../../../assets/img/champion_mastery/mastery_framecomplete.png")
-            .default
-        }
-      /> : null}
+      {champId ? (
+        <BorderImage
+          src={require("../../../../assets/img/champion_mastery/mastery_framecomplete.png")}
+        />
+      ) : null}
       {level > 1 ? (
         <Emblem
-          src={
-            require(`../../../../assets/img/champion_mastery/mastery_level${level}.png`)
-              .default
-          }
+          src={require(
+            `../../../../assets/img/champion_mastery/mastery_level${level > 10 ? 10 : level}.png`,
+          )}
           offsetRender={offset}
         />
       ) : null}

@@ -1,5 +1,5 @@
 import {MongoClient} from 'mongodb'
-import DatabaseApi from './Api'
+import DatabaseApi from './Api.js'
 const connect = async ({
     host,
     port,

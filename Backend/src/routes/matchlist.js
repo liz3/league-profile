@@ -6,7 +6,7 @@ const matchListRoutes = (api, database) => {
   router.get("/matchlist/:region/:accountId", async (req, res) => {
     try {
       const { region, accountId } = req.params;
-      const result = await api.getMatchHistory(region, accountId);
+      const result = await api.getMatchHistory(region, accountId, region);
       res.json(result);
     } catch (err) {
       if (err.response && err.response.status === 404) {

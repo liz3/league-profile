@@ -1,7 +1,7 @@
-import connectDb from "./database/index"
-import RiotApi from "./riot/RiotApi"
-import { createServer } from "./server/index"
-import routes from "./routes"
+import connectDb from "./database/index.js"
+import RiotApi from "./riot/RiotApi.js"
+import { createServer } from "./server/index.js"
+import routes from "./routes/index.js"
 const databaseOptionsDocker = {
     host: "database",
     port: 27017,

@@ -1,5 +1,5 @@
-import profile from "./profile"
-import matchlist from "./matchlist"
+import profile from "./profile.js"
+import matchlist from "./matchlist.js"
 
 export default [
     { path: "/user", handler: profile },

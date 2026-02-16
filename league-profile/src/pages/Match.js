@@ -49,10 +49,10 @@ const Match = ({ match }) => {
         <>
           <BackgroundShadow />
           <Banner simple />
-          <MatchRoot loading={loading} failed={failed} ready={ready} userPresent={userPresent} summonerId={summonerId} />
+          <MatchRoot loading={loading} failed={failed} ready={ready} region={region} userPresent={userPresent} summonerId={summonerId} />
         </>
       ) : (
-        <MatchRoot loading={loading} ready={ready} failed={failed} summonerId={summonerId} />
+        <MatchRoot loading={loading} ready={ready} failed={failed} summonerId={summonerId} region={region} />
       )}
     </RootWrapper>
   );

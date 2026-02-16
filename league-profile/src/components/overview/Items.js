@@ -22,14 +22,14 @@ const ProfileItems = () => {
       <Ranked />
       <SimpleItem
         name={"HONOR"}
-        image={require("../../assets/img/empty_state/honor_empty.png").default}
+        image={require("../../assets/img/empty_state/honor_empty.png")}
         desc={"Other players' Honor levels are not displayed"}
       />
       <Champion />
       <SimpleItem
         name={"TROPHY"}
         push
-        image={require("../../assets/img/empty_state/trophy_empty.png").default}
+        image={require("../../assets/img/empty_state/trophy_empty.png")}
         desc={
           "Trophies are awarded to players that win one or more brackets in Clash."
         }
@@ -38,7 +38,7 @@ const ProfileItems = () => {
         name={"BANNER"}
         push
         right
-        image={require("../../assets/img/empty_state/banner_empty.png").default}
+        image={require("../../assets/img/empty_state/banner_empty.png")}
         desc={"Banners can be earned by participation in Clash."}
       />
     </Wrapper>

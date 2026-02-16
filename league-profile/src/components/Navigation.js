@@ -45,15 +45,16 @@ const Line = styled.div`
 `;
 const Navigation = () => {
   const user = useSelector((state) => state.data.profile);
+  console.log(user)
   const page = useSelector((state) => state.data.activePage);
   return (
     <NavigationWrapper>
-      <Link to={`/profile/${user.region}/${user.user.name}`}>
+      <Link to={`/profile/${user.region}/${user.user.name}/${user.user.tag}`}>
         <Item active={page === "profile"}>
           Overview{page === "profile" ? <Line /> : null}
         </Item>
       </Link>
-      <Link to={`/profile/${user.region}/${user.user.name}/matchlist`}>
+      <Link to={`/profile/${user.region}/${user.user.name}/${user.user.tag}/matchlist`}>
         <Item active={page === "matchlist"}>
           Match History{page === "matchlist" ? <Line /> : null}
         </Item>

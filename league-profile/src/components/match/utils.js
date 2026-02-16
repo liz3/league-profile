@@ -2,10 +2,10 @@
 export const mapMatchData = (data, summonerId) => {
     let wantedUser = null;
     const playersMapped = data.info.participants.map(entry => {
-        const focused = entry.summonerId === summonerId;
+        const focused = entry.puuid === summonerId;
 
         const dataFull = {teamId: entry.teamId, player: {
-            summonerId: entry.summonerId,
+            summonerId: entry.puuid,
             summonerName: entry.summonerName,
             icon: entry.profileIcon,
             puuid: entry.puuid,

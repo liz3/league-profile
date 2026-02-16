@@ -47,7 +47,7 @@ const CaptionSmall = styled.p`
 `;
 const Image = styled.img`
   margin-top: ${props => props.empty ? 35 :30}px;
-  width: ${props => props.empty ? 200 : 150}px;
+  width: ${props => props.empty ? 200 : 180}px;
   height: auto;
   @media (min-width: 1780px) {
 
@@ -68,7 +68,7 @@ const EmptyState = () => {
         empty
         src={
           require("../../../../assets/img/empty_state/profile_unranked.png")
-            .default
+            
         }
       />
       <RankedModal />

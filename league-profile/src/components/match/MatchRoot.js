@@ -60,10 +60,11 @@ const MatchRoot = ({
   failed,
   ready,
   loading,
+  region,
 }) => {
   const data = useSelector((state) => state.data.match);
   const mapped = data.loaded ? mapMatchData(data, summonerId) : null;
-
+  console.log(data)
   return (
     <RootWrapper userPresent={userPresent}>
       {!mapped && !loading && !failed ? (
@@ -85,7 +86,7 @@ const MatchRoot = ({
           <div>
             <img
               alt={""}
-              src={require("../../assets/img/x_mask.png").default}
+              src={require("../../assets/img/x_mask.png")}
             />
           </div>
         </CloseButton>
@@ -94,7 +95,7 @@ const MatchRoot = ({
       {mapped && ready ? (
         <TeamsWrapper>
           {mapped.teams.map((entry, index) => (
-            <Team key={entry.id} platformId={data.info.platformId} index={index} team={entry} />
+            <Team region={region} key={entry.id} platformId={data.info.platformId} index={index} team={entry} />
           ))}
         </TeamsWrapper>
       ) : null}

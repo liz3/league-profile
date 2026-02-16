@@ -1,6 +1,6 @@
 import * as ActionTypes from "./types";
 import Api from "../../Api";
-export const loadProfile = (region, name) => (dispatch, getState) => {
+export const loadProfile = (region, name,tag) => (dispatch, getState) => {
   const {
     updated,
     user: userSaved,
@@ -17,7 +17,7 @@ export const loadProfile = (region, name) => (dispatch, getState) => {
     return new Promise((resolve) => resolve(getState().data.profile));
   }
 
-  return Api.getProfile(region, name).then((res) => {
+  return Api.getProfile(region, name, tag).then((res) => {
     if(Array.isArray(res.data.ranked) && res.data.ranked.length)
       res.data.ranked = res.data.ranked.filter(entry => entry.queueType !== "RANKED_TFT_TURBO");
     dispatch({

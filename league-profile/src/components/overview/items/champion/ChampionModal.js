@@ -6,7 +6,7 @@ import { getEntryFromId } from "../../../../common/utils";
 
 const Wrapper = styled.div`
 position: absolute;
-
+ background: #1a1c21;
 top: -385px;
 @media (min-width: 1780px) {
   top: -460px;
@@ -14,9 +14,9 @@ top: -385px;
 }
 left: 50%;
 transform: translate(-50%, 0);
-& > div:nth-child(3) {
+& > div:nth-child(2) {
     padding: 20px 45px;
-    background rgb(1,10,19);
+    background: #1b1c21;
     border: 2px solid rgb(95,73,30);
     z-index: 3;
     position: relative;
@@ -31,7 +31,7 @@ const BottomLine = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   border-radius: 6px;
-  background: #0a0a0a;
+
   height: 30px;
   z-index: 0;
   @media (min-width: 1780px) {
@@ -117,16 +117,15 @@ const EntryWrapper = styled.div`
         font-size: 24px;
       }
       margin: 30px 0 0 0;
-      font-family: "LoL Display";
       color: rgb(240, 230, 210);
-      font-size: 20px;
+
+      font-size: 16px;
 
       font-weight: 700;
       text-transform: uppercase;
     }
     & > span {
-      font-family: "LoL Display";
-      color: rgba(240, 230, 210, 0.9);
+      color: #a09b8c;
       font-size: 16px;
       font-weight: 200;
       @media (min-width: 1780px) {
@@ -159,16 +158,12 @@ const Entry = ({ data, size, adjust }) => {
             style={{
               width: "100%",
               height: "1px",
-              background: "rgb(70,55,20)",
-              margin: "2px 0",
+              background: "#a09b8c",
+              margin: "2px 0 4px 0",
             }}
           />
-          <span>
-            {data.championPoints.toLocaleString(undefined, {
-              style: "decimal",
-            })}{" "}
-            pts
-          </span>
+          <span>Mastery {data.championLevel}</span><br/>
+            <span>Best grade: N/A</span>
         </div>
       ) : null}
     </EntryWrapper>
@@ -178,14 +173,10 @@ const Entry = ({ data, size, adjust }) => {
 const ChampionModal = ({ champs }) => {
   return (
     <Wrapper>
-      <BottomLine />
-      <Caret
-        src={require("../../../../assets/img/tooltip-caret.png").default}
-      />
+      <Caret src={require("../../../../assets/img/tooltip-caret.png")} />
       <div>
         <Title>HIGHEST CHAMPION MASTERY</Title>
-        <LineOne />
-        <LineTwo />
+
         <EntriesWrapper>
           <Entry data={champs[1]} size={105} adjust />
           <Entry data={champs[0]} size={130} />

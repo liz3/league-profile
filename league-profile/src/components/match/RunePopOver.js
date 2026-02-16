@@ -87,7 +87,7 @@ const RunePopover = ({ data }) => {
     <Wrapper>
       <ModalRoot>
         <BottomLine />
-        <Caret alt={""} src={require("../../assets/img/tooltip-caret.png").default} />
+        <Caret alt={""} src={require("../../assets/img/tooltip-caret.png")} />
         <ModalContent>
           <div>
             <img alt={""} src={getRuneImg(data.rune.icon)} />
