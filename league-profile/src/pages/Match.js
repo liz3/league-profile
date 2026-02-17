@@ -9,17 +9,20 @@ import {
 import Banner from "../components/overview/Banner";
 import MatchRoot from "../components/match/MatchRoot";
 import BackgroundShadow from "../components/BackgroundShadow";
+import { useParams } from "react-router-dom";
 const RootWrapper = styled.div`
   transition: opacity 0.4s ease;
   height: 100%;
   position: relative;
 `;
 
-const Match = ({ match }) => {
+const Match = () => {
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { region, matchId, summonerId } = match.params;
+  const params = useParams();
+  const { region, matchId, summonerId } = params;
+  console.log(params)
   const dispatch = useDispatch();
   const { loaded: userPresent } = useSelector((state) => state.data.profile);
   useEffect(() => {

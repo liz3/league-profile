@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { getChampionAvatar, getEntryFromId, getRune } from "../../common/utils";
-import { withRouter } from "react-router-dom";
 import RunePopover from "./RunePopOver";
 import SummonerPopover from "./SummonerPopover";
 import ItemPopover from "./ItemPopover";
 import { setData } from "../../common/reducers/context_menu/actions";
 import Api from "../../common/Api";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -126,13 +126,13 @@ const KeyHostMap = {
   ru: "RU",
 };
 
-const Entry = ({ data, push, history, platformId, region }) => {
+const Entry = ({ data, push, platformId, region }) => {
   const dispatch = useDispatch();
   const patch = useSelector((state) => state.data.leagueData.version);
   const { runes, summoners, items } = useSelector(
     (state) => state.data.leagueMatchData
   );
-
+  const navigate = useNavigate();
   const { champions } = useSelector((state) => state.data.leagueData);
   const keyStone = getRune(runes, data.playerData.perks.styles[0].selections[0].perk);
   const champion = getEntryFromId(champions, data.playerData.championId);
@@ -161,7 +161,7 @@ const Entry = ({ data, push, history, platformId, region }) => {
                     region,
                     data.player.summonerId
                   ).then((res) => {
-                    history.push(
+                    navigate(
                       `/profile/${region}/${encodeURIComponent(
                         res.data.user.name
                       )}/${encodeURIComponent(
@@ -235,4 +235,4 @@ const Entry = ({ data, push, history, platformId, region }) => {
     </Wrapper>
   );
 };
-export default withRouter(Entry);
+export default Entry;

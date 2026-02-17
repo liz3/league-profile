@@ -10,6 +10,7 @@ import BackgroundShadow from "../components/BackgroundShadow";
 import MatchlistRoot from "../components/matchlist/MatchlistRoot";
 import Banner from "../components/overview/Banner";
 import Search from "../components/Search";
+import { useParams } from "react-router-dom";
 
 const RootWrapper = styled.div`
   transition: opacity 0.4s ease;
@@ -24,9 +25,9 @@ const SearchContainer = styled.div`
   z-index: 300;
 `;
 
-const Matchlist = ({ match }) => {
+const Matchlist = () => {
   const dispatch = useDispatch();
-  const { region, name,tag } = match.params;
+  const { region, name,tag } = useParams();
   useEffect(() => {
     dispatch(setPage("matchlist"));
     dispatch(loadProfile(region, name, tag)).then((res) => {

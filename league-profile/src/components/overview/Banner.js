@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { getProfilePictureUrl } from "../../common/utils";
-import BannerBaseImage from "../../assets/img/banners/00_unranked_banner.png";
+import BannerBaseImage from "../../assets/img/banners/default.png";
 import LevelBar from "./LevelBar";
 import Challenges from "./Challenges";
 
@@ -55,25 +55,16 @@ const SmallProfilePicture = styled.img`
   border-radius: 50%;
   border: 2px solid gold;
 `;
-const BigProfilePicture = styled.img`
-  width: 113px;
-  height: auto;
-  border-radius: 50%;
-  margin-top: 72px;
-  @media (min-width: 1780px) {
-    width: 180px;
-    margin-top: 95px;
-  }
-`;
 
 const BannerBase = styled.img`
   position: absolute;
-  width: 637px;
+width: 429px;
   height: auto;
-  left: -134px;
-  top: 47px;
+  left: -30px;
+  top: -270px;
   @media (min-width: 1780px) {
-    width: 512px;
+    width: 482px;
+  top: -236px;
   }
 `;
 const TrimBase = styled.img`
@@ -94,8 +85,9 @@ const BannerContent = styled.div`
   width: 280px;
   text-align: center;
   @media (min-width: 1780px) {
-    width: 340px;
-    top: 100px;
+    top: 170px;
+    width: 280px;
+    left: 65px;
   }
   & p {
     @media (min-width: 1780px) {
@@ -110,6 +102,18 @@ const BannerContent = styled.div`
     font-size: 30px;
   }
 `;
+const BigProfilePicture = styled.img`
+  width: 113px;
+  height: auto;
+  border-radius: 50%;
+  margin-top: 72px;
+  @media (min-width: 1780px) {
+  width: 113px;
+    margin-top: 72px;
+   width: 137px;
+  }
+`;
+
 const LevelBorderImage = styled.img`
 width: 283px;
   height: auto;
@@ -117,9 +121,12 @@ width: 283px;
   top: -5px;
   left: -1px;
 @media (min-width: 1780px) {
-  width: 310px;
-  top: 170px;
-}
+
+    width: 320px;
+    top: -12px;
+
+  left: -18px;
+
 }
 `;
 const LevelContainer = styled.div`
@@ -151,17 +158,27 @@ const LevelContainer = styled.div`
     font-family: "LoL Display";
     font-weight: 700;
     position: absolute;
-  text-align: center;
-  width: 100%;
-  display: inline-block;
-
+    text-align: center;
+    width: 100%;
+    display: inline-block;
   }
 
   @media (min-width: 1780px) {
-    width: 60px;
-    height: 35px;
-    top: 400px;
-    left: 139px;
+    top: -25px;
+    left: 118px;
+    width: 45px;
+    height: 25px;
+ & div {
+  top: 5px;
+  left: -8px;
+  width: 14px;
+  height: 13px;
+  border: 3.5px solid #0a96aa;
+  }
+  & img {
+  left: -15px;
+  width: 176%;
+  }
     & span {
       font-size: 24px;
     }
@@ -176,6 +193,7 @@ const ProfileNameBig = styled.div`
   left: 0;
   width: 100%;
   top: 240px;
+
   & > div > div {
     display: none;
     opacity: 0;
@@ -195,6 +213,17 @@ const ProfileNameBig = styled.div`
     margin: 0;
     color: #f0e6d2;
     font-size: 24px;
+  @media (min-width: 1780px) {
+  font-size: 30px;
+  }
+  }
+  .copy-img {
+  width: 20px;
+  height: 20px;
+    @media (min-width: 1780px) {
+    width: 28px;
+  height: 28px;
+  }
   }
 `;
 
@@ -207,6 +236,10 @@ const Title = styled.div`
   color: #949083;
   font-size: 18px;
   text-align: center;
+  @media (min-width: 1780px) {
+    font-size: 22px;
+  top: 285px;
+  }
 `;
 
 const NameHoverWrapper = styled.div`
@@ -271,9 +304,18 @@ const Banner = ({ simple }) => {
   }, [copied]);
   const patch = useSelector((state) => state.data.leagueData.version);
   if (!user.loaded) return null;
+  const banner =
+    user.challenges.preferences.bannerAccent !== "" &&
+    Number.parseInt(user.challenges.preferences.bannerAccent) !== Number.NaN &&
+    Number.parseInt(user.challenges.preferences.bannerAccent) >= 3 &&
+    Number.parseInt(user.challenges.preferences.bannerAccent) <= 24
+      ? require(
+          `../../assets/img/banners/custom_${user.challenges.preferences.bannerAccent}.png`,
+        )
+      : BannerBaseImage;
   return (
     <Wrapper>
-      {!simple && <BannerBase src={BannerBaseImage} />}
+      {!simple && <BannerBase src={banner} />}
       {/*{!simple && <TrimBase src={DefaultTrimImage} />}*/}
       <TopLine>
         <SmallProfilePicture
@@ -312,7 +354,7 @@ const Banner = ({ simple }) => {
             <div>
               <img
                 src={require("../../assets/img/game-id-clipboard-copy.svg")}
-                style={{ width: 20, height: 20 }}
+                className={"copy-img"}
               />
               <NameHover
                 wasCopied={copied}

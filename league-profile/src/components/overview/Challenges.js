@@ -7,6 +7,10 @@ const Wrapper = styled.div`
   top: 320px;
   left: 40px;
   justify-content: center;
+   @media (min-width: 1780px) {
+  left: 20px;
+   top: 370px;
+  }
 `;
 
 const Empty = styled.div`
@@ -16,13 +20,22 @@ const Empty = styled.div`
   background: #191a1d;
   border: 1px solid #2d2d2f;
   margin: 0 2px;
+  @media (min-width: 1780px) {
+  margin: 0 4px;
+   width: 80px;
+  height: 80px;
+  }
 `;
 
 const Challenge = styled.div`
   width: 60px;
   height: 60px;
   margin: 0 2px;
-
+  @media (min-width: 1780px) {
+  margin: 0 4px;
+   width: 75px;
+  height: 75px;
+  }
   & > img {
     width: 100%;
     height: 100%;
@@ -58,6 +71,9 @@ const ChallengeInfoWrapper = styled.div`
       & .description {
         margin: 10px 0;
         font-size: 16px;
+    @media (min-width: 1780px) {
+    font-size: 20px;
+  }
         color: #989687;
       }
     }
@@ -70,6 +86,7 @@ left: 2px;
 top: 2px;
   width: 70px;
   height: auto;
+
 `
 
 const InfoRow = styled.div`
@@ -81,10 +98,18 @@ const InfoRow = styled.div`
   & > p:nth-child(1) {
     text-transform: uppercase;
     font-size: 20px;
+      @media (min-width: 1780px) {
+    font-size: 24px;
+  }
+   
   }
   & > p:nth-child(2) {
     text-transform: uppercase;
     font-size: 16px;
+      @media (min-width: 1780px) {
+    font-size: 20px;
+  }
+   
     color: #989687;
   }
 `;
@@ -100,6 +125,10 @@ const ProgressBase = styled.div`
   & > span {
     color: white;
     font-size: 18px;
+      @media (min-width: 1780px) {
+    font-size: 22px;
+  }
+   
     position: relative;
     z-index: 5;
   }

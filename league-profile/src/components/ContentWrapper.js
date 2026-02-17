@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadLeagueData } from "../common/reducers/data/actions";
 import { getChampionSplash, getEntryFromId } from "../common/utils";
 import Navigation from "./Navigation";
-import { withRouter } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ContextMenu from "./ContextMenu";
 import { setData } from "../common/reducers/context_menu/actions";
 
@@ -34,13 +34,13 @@ const ContextMenuWrapper = () => {
   );
 };
 
-const ContentWrapper = ({ children, location }) => {
+const ContentWrapper = ({ children }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadLeagueData());
   }, [dispatch]);
   const ctx_menu = useSelector((state) => state.context_menu);
-
+  const location = useLocation();
   const { loaded, champions } = useSelector((state) => state.data.leagueData);
   const user = useSelector((state) => state.data.profile);
 
@@ -74,4 +74,4 @@ const ContentWrapper = ({ children, location }) => {
     </Wrapper>
   );
 };
-export default withRouter(ContentWrapper);
+export default ContentWrapper;

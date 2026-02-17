@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Dropdown from "./Dropdown";
-import { withRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const KeyHostMap = {
   ASIA: "Asia",
@@ -89,10 +89,20 @@ const HashTagSpan = styled.div`
     background: #0a0a0a;
      
 `;
-const Search = ({ history }) => {
+const Search = () => {
   const [region, setRegion] = useState("EUROPE");
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
+  const navigate = useNavigate();
+  const onPaste = (ev)  => {
+    const paste = (event.clipboardData || window.clipboardData).getData("text");
+    if(paste.includes ("#")) {
+      ev.preventDefault();
+      const [name, tag] = paste.split("#");
+      setName(name);
+      setTag(tag);
+    }
+  }
   return (
     <Wrapper>
       <Dropdown
@@ -121,6 +131,7 @@ const Search = ({ history }) => {
         <div>
           <input
             value={name}
+            onPaste={onPaste}
             onChange={(ev) => {
               setName(ev.target.value);
             }}
@@ -133,7 +144,7 @@ const Search = ({ history }) => {
               ) {
                 ev.preventDefault();
 
-                history.push(`/profile/${region}/${encodeURIComponent(name)}`);
+                navigate(`/profile/${region}/${encodeURIComponent(name)}/${encodeURIComponent(tag)}`);
               }
             }}
             placeholder={"Game Name"}
@@ -142,6 +153,7 @@ const Search = ({ history }) => {
               <img src={require("../assets/img/hashtag.svg")}  />
           </HashTagSpan>
           <input
+                onPaste={onPaste}
             value={tag}
             onChange={(ev) => {
               setTag(ev.target.value);
@@ -155,7 +167,7 @@ const Search = ({ history }) => {
               ) {
                 ev.preventDefault();
 
-                history.push(
+                navigate(
                   `/profile/${region}/${encodeURIComponent(name)}/${encodeURIComponent(tag)}`,
                 );
               }
@@ -167,4 +179,4 @@ const Search = ({ history }) => {
     </Wrapper>
   );
 };
-export default withRouter(Search);
+export default Search;

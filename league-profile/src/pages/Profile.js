@@ -7,6 +7,7 @@ import Banner from "../components/overview/Banner";
 import ProfileItems from "../components/overview/Items";
 import PopUp from "../components/PopUp";
 import Search from "../components/Search";
+import { useParams } from "react-router-dom";
 
 const RootWrapper = styled.div`
   transition: opacity 0.4s ease;
@@ -26,9 +27,9 @@ const SearchContainer = styled.div`
   top: 40px;
   right: 60px;
 `;
-const Profile = ({ match }) => {
+const Profile = () => {
   const dispatch = useDispatch();
-  const { region, name,tag } = match.params;
+  const { region, name,tag } = useParams();
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   useEffect(() => {

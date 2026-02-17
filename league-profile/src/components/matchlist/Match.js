@@ -10,7 +10,7 @@ import {
   formatTime,
 } from "../../common/utils";
 import maps from "../../assets/maps.json";
-import { withRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ChampImg = styled.div`
   border-radius: 50%;
@@ -93,7 +93,7 @@ position: relative;
   display: flex;
   margin: 0;
   padding: 15px 0 15px 35px;
-  :hover {
+  &:hover {
     cursor: pointer;
     ${ChampImg} {
       background: linear-gradient(90deg, rgba(91,77,44,1) 0%, rgba(240,218,148,1) 100%);
@@ -207,7 +207,8 @@ const InfoPart = styled.div`
   }
 `;
 
-const Match = ({ data, history }) => {
+const Match = ({ data}) => {
+  const navigate = useNavigate();
   const patch = useSelector((state) => state.data.leagueData.version);
   const user = useSelector((state) => state.data.profile);
   const { champions } = useSelector((state) => state.data.leagueData);
@@ -217,7 +218,7 @@ const Match = ({ data, history }) => {
   return (
     <RootWrapper
       onClick={() =>
-        history.push(`/match/${user.region}/${data.matchIdNew}/${user.user.id}`)
+        navigate(`/match/${user.region}/${data.matchIdNew}/${user.user.id}`)
       }
     >
       <LeftBar />
@@ -298,4 +299,4 @@ const Match = ({ data, history }) => {
     </RootWrapper>
   );
 };
-export default withRouter(Match);
+export default Match;

@@ -11,7 +11,7 @@ const RankedBigWrapper = styled.div`
     height: 360px;
     width: 1500px;
     top: -400px;
-    left: -52px;
+   left: -260px;
   }
   background: #0a0a0a;
 
@@ -52,7 +52,7 @@ const Caret = styled.img`
   @media (min-width: 1780px) {
     top: 362px;
     width: 36px;
-    left: 128px;
+    left: 366px;
   }
   z-index: 10;
   width: 30px;

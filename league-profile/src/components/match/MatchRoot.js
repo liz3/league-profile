@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { mapMatchData } from "./utils";
 import Head from "./Head";
 import Team from "./Team";
-import { withRouter } from "react-router-dom";
 import PopUp from "../PopUp";
 
 const RootWrapper = styled.div`
@@ -56,7 +55,6 @@ const CloseButton = styled.div`
 const MatchRoot = ({
   summonerId,
   userPresent,
-  history,
   failed,
   ready,
   loading,
@@ -64,7 +62,6 @@ const MatchRoot = ({
 }) => {
   const data = useSelector((state) => state.data.match);
   const mapped = data.loaded ? mapMatchData(data, summonerId) : null;
-  console.log(data)
   return (
     <RootWrapper userPresent={userPresent}>
       {!mapped && !loading && !failed ? (
@@ -102,4 +99,4 @@ const MatchRoot = ({
     </RootWrapper>
   );
 };
-export default withRouter(MatchRoot);
+export default MatchRoot;

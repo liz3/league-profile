@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ContentWrapper from './components/ContentWrapper'
 import Store from "./common/Store";
 import { Provider } from "react-redux";
@@ -28,12 +28,12 @@ function App() {
         <Router>
         <Provider store={Store}>
         <ContentWrapper>
-          <Switch>
-            <Route path={"/profile/:region/:name/:tag"} component={Profile}  exact/>
-            <Route path={"/profile/:region/:name/:tag/matchlist"} component={Matchlist} exact />
-            <Route path={"/match/:region/:matchId/:summonerId"} component={Match} exact/>
+          <Routes>
+            <Route path={"/profile/:region/:name/:tag"} element={<Profile />}  exact/>
+            <Route path={"/profile/:region/:name/:tag/matchlist"} element={<Matchlist />} exact />
+            <Route path={"/match/:region/:matchId/:summonerId"} element={<Match />} exact/>
             <Route component={Home} />
-          </Switch>
+          </Routes>
         </ContentWrapper>
         </Provider>
         </Router>

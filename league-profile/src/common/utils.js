@@ -5,6 +5,8 @@ export const getItemImage = (patch, id) => `https://ddragon.leagueoflegends.com/
 export const getSummonerImage = (patch, key) => `https://ddragon.leagueoflegends.com/cdn/${patch}/img/spell/${key}.png`
 export const getRuneImg = path => `http://ddragon.leagueoflegends.com/cdn/img/${path}`
 export const getEntryFromId = (data, idRaw) => {
+  if(!data)
+    return {}
     const id = typeof idRaw === 'number' ? `${idRaw}` : idRaw;
     return Object.values(data).find(entry => entry.key === id)
 }

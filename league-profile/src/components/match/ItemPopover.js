@@ -12,7 +12,7 @@ const ModalRoot = styled.div`
   z-index: 60;
 `;
 const ModalContent = styled.div`
-background rgb(1,10,19);
+ background: #1a1c21;
     border: 2px solid rgb(95,73,30);
     z-index: 3;
     padding: 10px;
